@@ -1,0 +1,25 @@
+﻿@model Customer
+
+    <div class="card">
+        <div class="card-header">
+            <h1>Customer Edit</h1>
+        </div>
+        <div class="card-body">
+            <form method="post">
+                <input asp-for="Id" type="hidden"/>
+                <label for="Name">Name</label>
+                <input asp-for="Name" type="text" class="form-control" />
+
+                <label for="Phone">Phone</label>
+                <input asp-for="Phone" type="tel" class="form-control" />
+
+                <label for="Email">Email</label>
+                <input asp-for="Email" type="email"class="form-control" />
+
+                <label for="Address">Address</label>
+                <input asp-for="Address" type="text" class="form-control" />
+
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </form>
+        </div>
+    </div>

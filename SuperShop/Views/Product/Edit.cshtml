@@ -1,0 +1,25 @@
+﻿@model SuperShop.Models.EntityModels.Product
+
+<div class="card">
+    <div class="card-header">
+        <h1>Customer Edit</h1>
+    </div>
+    <div class="card-body">
+        <form method="post">
+            <input asp-for="Id" type="hidden" />
+            <label for="Name">Name</label>
+            <input asp-for="Name" type="text" class="form-control" />
+
+            <label for="Code">Code</label>
+            <input asp-for="Code" type="tel" class="form-control" />
+
+            <label for="Quantity">Quantity</label>
+            <input asp-for="Quantity" type="text" class="form-control" />
+
+            <label for="Price">Price</label>
+            <input asp-for="Price" type="text" class="form-control" />
+
+            <input type="submit" value="Save" class="btn btn-primary" />
+        </form>
+    </div>
+</div>

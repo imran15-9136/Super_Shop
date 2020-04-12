@@ -1,0 +1,19 @@
+﻿@model SuperShop.Models.ProductCatagoryCreateViewModel
+
+<div class="card">
+    <div class="card-header">
+        <h1>Add Product Catagory</h1>
+    </div>
+    <div class="card-body">
+        <form method="post">
+            <div>
+                <label for="Name">Product Name</label>
+                <input type="text" asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="alert-danger"></span>
+            </div>
+            <div>
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>

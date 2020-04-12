@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SuperShop.BLL.Abstraction\SuperShop.BLL.Abstraction.csproj" />
+    <ProjectReference Include="..\SuperShop.Models\SuperShop.Models.csproj" />
+    <ProjectReference Include="..\SuperShop.Repositories.Abstraction\SuperShop.Repositories.Abstraction.csproj" />
+    <ProjectReference Include="..\SuperShop.Repositories\SuperShop.Repositories.csproj" />
+  </ItemGroup>
+
+</Project>

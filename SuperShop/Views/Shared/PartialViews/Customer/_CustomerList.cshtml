@@ -1,0 +1,33 @@
+﻿@model ICollection<SuperShop.Models.ResponseModel.CustomerResponseModel>
+
+<div class="card-body">
+    <h1>Customer List</h1>
+    <table class="table table-bordered table-hover table-responsive">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Phone</th>
+                <th>Email</th>
+                <th>Address</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var customer in Model)
+            {
+                <tr>
+                    <td>@customer.Name</td>
+                    <td>@customer.Phone</td>
+                    <td>@customer.Email</td>
+                    <td>@customer.Address</td>
+                    <td>
+                        <a asp-controller="Customer" asp-action="Edit" asp-route-id="@customer.Id" class="btn btn-primary">Edit</a>
+                    </td>
+                    <td>
+                        <a asp-controller="Customer" asp-action="Delete" asp-route-id="@customer.Id" class="btn btn-danger">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

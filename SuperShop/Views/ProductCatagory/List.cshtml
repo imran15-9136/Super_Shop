@@ -1,0 +1,26 @@
+﻿@model ICollection<SuperShop.Models.EntityModels.ProductCatagory>
+
+<div class="card-body">
+    <h1>Catagory List</h1>
+    <table class="table table-bordered table-hover table-responsive">
+        <thead>
+            <tr>
+                <th>Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var catagory in Model)
+            {
+                <tr>
+                    <td>@catagory.Name</td>
+                    <td>
+                        <a asp-controller="Customer" asp-action="Edit" asp-route-id="@catagory.Id" class="btn btn-primary">Edit</a>
+                    </td>
+                    <td>
+                        <a asp-controller="Customer" asp-action="Delete" asp-route-id="@catagory.Id" class="btn btn-danger">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
