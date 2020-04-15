@@ -2,32 +2,39 @@
 
 <div class="card">
     <div class="card-header">
-        <h1>Customer Create</h1>
+        <h1>Product Add</h1>
     </div>
     <div class="card-body">
         <form method="post">
             <div>
-                <label for="Name">Product Catagory</label>
-                <input type="text" asp-for="Products" class="form-control" />
-                <span asp-validation-for="Name" class="alert-danger"></span>
+                <label for="CategoryId">Product Catagory</label>
+                <select type="text" asp-for="CategoryId" asp-items="Model.ProductCatagoryItem" class="form-control">
+                    <option value="">Select...</option>
+                </select>
+                <span asp-validation-for="CategoryId" class="alert-danger"></span>
             </div>
+
             <div>
                 <label for="Name">Product Name</label>
                 <input type="text" asp-for="Name" class="form-control" />
                 <span asp-validation-for="Name" class="alert-danger"></span>
             </div>
+
             <div>
                 <label for="Phone">Code</label>
                 <input type="text" asp-for="Code" class="form-control" />
-            </div>
+            </div>1
+
             <div>
                 <label for="Email">Quantity</label>
                 <input type="text" asp-for="Quantity" class="form-control" />
             </div>
+
             <div>
                 <label for="Address">Price</label>
                 <input type="text" asp-for="Price" class="form-control" />
             </div>
+
             <div>
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>

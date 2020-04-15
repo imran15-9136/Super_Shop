@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using SuperShop.BLL;
 using SuperShop.BLL.Abstraction;
 using SuperShop.Models;
@@ -16,9 +17,11 @@ namespace SuperShop.Controllers
     {
         // GET: /<controller>/
         IProductManager _productManager;
-        public ProductController(IProductManager productManager)
+        IProductCatagoryManager _productCatagoryManager;
+        public ProductController(IProductManager productManager, IProductCatagoryManager productCatagoryManager)
         {
             _productManager = productManager;
+            _productCatagoryManager = productCatagoryManager;
         }
 
         public IActionResult Index()
@@ -28,6 +31,12 @@ namespace SuperShop.Controllers
 
         public IActionResult Create()
         {
+            ProductCreateViewModel product = new ProductCreateViewModel();
+            product.ProductCatagoryItem = _productCatagoryManager.GetAll()
+                                                   .Select( c=> new SelectListItem() { 
+                                                       Text=c.Name,
+                                                       Value=c.Id.ToString()
+                                                   }).ToList();
             return View();
         }
 
@@ -41,7 +50,8 @@ namespace SuperShop.Controllers
                     Name = entity.Name,
                     Code = entity.Code,
                     Price = entity.Price,
-                    Quantity = entity.Quantity
+                    Quantity = entity.Quantity,
+                  
                 };
                 bool isSave = _productManager.Add(product);
                 if (isSave)
