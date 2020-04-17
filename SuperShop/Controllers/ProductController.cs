@@ -37,7 +37,7 @@ namespace SuperShop.Controllers
                                                        Text=c.Name,
                                                        Value=c.Id.ToString()
                                                    }).ToList();
-            return View();
+            return View(product);
         }
 
         [HttpPost]
