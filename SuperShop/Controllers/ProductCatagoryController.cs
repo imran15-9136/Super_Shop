@@ -39,7 +39,7 @@ namespace SuperShop.Controllers
                 bool isSave = _catagoryManager.Add(catagory);
                 if (isSave)
                 {
-                    return View("List");
+                    return RedirectToAction("List","ProductCatagory",null);
                 }
             }
             return View();
@@ -67,9 +67,9 @@ namespace SuperShop.Controllers
             bool isSave = _catagoryManager.Update(catagory);
             if (isSave)
             {
-                return View("List");
+                return RedirectToAction("List");
             }
-            return View();
+            return View(catagory);
         }
 
         public IActionResult Delete(int? id)
@@ -80,7 +80,7 @@ namespace SuperShop.Controllers
                 bool isSave = _catagoryManager.Remove(catagory);
                 if (isSave)
                 {
-                    return View("List");
+                    return RedirectToAction("List","ProductCatagory",null);
                 }
             }
             return View("List");

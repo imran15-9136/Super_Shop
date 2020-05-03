@@ -87,7 +87,7 @@ namespace SuperShop.Controllers
             bool isSave = _productManager.Update(product);
             if (isSave)
             {
-                return View("List");
+                return RedirectToAction("List");
             }
             return View(product);
         }
