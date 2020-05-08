@@ -15,7 +15,7 @@ namespace SuperShop.Controllers
 {
     public class CustomerController : Controller
     {
-        ICustomerManager _customerManager;
+        private readonly ICustomerManager _customerManager;
         IMapper _mapper;
         public CustomerController(ICustomerManager customerManager, IMapper mapper)
         {

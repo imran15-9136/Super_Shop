@@ -16,8 +16,8 @@ namespace SuperShop.Controllers
     public class ProductController : Controller
     {
         // GET: /<controller>/
-        IProductManager _productManager;
-        IProductCatagoryManager _productCatagoryManager;
+        private readonly IProductManager _productManager;
+        private readonly IProductCatagoryManager _productCatagoryManager;
         public ProductController(IProductManager productManager, IProductCatagoryManager productCatagoryManager)
         {
             _productManager = productManager;

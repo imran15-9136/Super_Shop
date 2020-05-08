@@ -12,7 +12,7 @@ namespace SuperShop.Controllers
 {
     public class ProductCatagoryController : Controller
     {
-        IProductCatagoryManager _catagoryManager;
+        private readonly IProductCatagoryManager _catagoryManager;
         public ProductCatagoryController(IProductCatagoryManager productCatagoryManager)
         {
             _catagoryManager = productCatagoryManager;
