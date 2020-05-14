@@ -32,8 +32,6 @@ namespace SuperShop.Repositories
                 return GetFirstorDefault(customer=> customer.Id == id);
             }
             return null;
-        }
-
-        
+        } 
     }
 }

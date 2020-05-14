@@ -1,0 +1,42 @@
+﻿@model ICollection<SuperShop.Models.EntityModels.Employee>
+
+@{
+    ViewData["Title"] = "View";
+}
+
+<h1>View</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Designation)
+            </td>
+            <td>
+                @if (item.Image != null)
+                {
+                    var base64 = Convert.ToBase64String(item.Image);
+                    var imgsrc = string.Format("data:image/png;base64,{0}", base64);
+                    <img src='@imgsrc' style="max-width:100px;max-height:100px" />
+                }
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>     
+        }
+    </tbody>
+</table>

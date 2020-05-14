@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using SuperShop.Models;
 using SuperShop.Models.ResponseModel;
+using SuperShop.Models.EntityModels;
 
 namespace SuperShop.AutoMapperProfile
 {
@@ -15,6 +16,9 @@ namespace SuperShop.AutoMapperProfile
             CreateMap<CustomerCreateViewModel, Customer>();
             CreateMap<Customer, CustomerCreateViewModel>();
             CreateMap<Customer, CustomerResponseModel>();
+            CreateMap<EmployeeCreateViewModel, Employee>();
+            CreateMap<Employee, EmployeeCreateViewModel>();
+            CreateMap<Employee, EmployeeResponseModel>();
         }
     }
 }

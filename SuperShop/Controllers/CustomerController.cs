@@ -33,11 +33,11 @@ namespace SuperShop.Controllers
         //Customer/Create
         public IActionResult Create()
         {
-            CustomerCreateViewModel customer = new CustomerCreateViewModel();
-            customer.CustomerList = _customerManager
-                                    .GetAll()
-                                    .Select(c => _mapper.Map<CustomerResponseModel>(c)).ToList();
-            return View(customer);
+            //CustomerCreateViewModel customer = new CustomerCreateViewModel();
+            //customer.CustomerList = _customerManager
+            //                        .GetAll()
+            //                        .Select(c => _mapper.Map<CustomerResponseModel>(c)).ToList();
+            return View();
         }
 
         [HttpPost]

@@ -1,4 +1,5 @@
-﻿using SuperShop.Repositories.Abstraction.Base;
+﻿using SuperShop.Repositories.Abstraction;
+using SuperShop.Repositories.Abstraction.Base;
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
@@ -9,6 +10,7 @@ namespace SuperShop.BLL.Abstraction.Base
     public abstract class Manager<T> where T:class
     {
         IRepository<T> _repository;
+
         public Manager(IRepository<T> repository)
         {
             _repository = repository;

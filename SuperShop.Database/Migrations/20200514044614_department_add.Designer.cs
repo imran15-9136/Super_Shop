@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SuperShop.Database;
 
 namespace SuperShop.Migrations
 {
     [DbContext(typeof(SuperShopDbContext))]
-    partial class SuperShopDbContextcsModelSnapshot : ModelSnapshot
+    [Migration("20200514044614_department_add")]
+    partial class department_add
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -70,9 +72,6 @@ namespace SuperShop.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("DepartmentId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Designation")
                         .HasColumnType("nvarchar(max)");
 
@@ -83,8 +82,6 @@ namespace SuperShop.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("DepartmentId");
 
                     b.ToTable("Employees");
                 });
@@ -133,15 +130,6 @@ namespace SuperShop.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("ProductCatagories");
-                });
-
-            modelBuilder.Entity("SuperShop.Models.EntityModels.Employee", b =>
-                {
-                    b.HasOne("SuperShop.Models.EntityModels.Department", "Department")
-                        .WithMany("Employees")
-                        .HasForeignKey("DepartmentId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
                 });
 
             modelBuilder.Entity("SuperShop.Models.EntityModels.Product", b =>

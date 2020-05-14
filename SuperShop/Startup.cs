@@ -41,6 +41,9 @@ namespace SuperShop
             services.AddTransient<IProductCatagoryManager, ProductCatagoryManager>();
             services.AddTransient<IProductCatagoryRepositories, ProductCatagoriesRepositories>();
 
+            services.AddTransient<IEmployeeManager, EmployeeManager>();
+            services.AddTransient<IEmployeeRepositories, EmployeeRepositories>();
+
             services.AddTransient<DbContext, SuperShopDbContext>();
             services.AddAutoMapper(typeof(Startup).Assembly);
         }
