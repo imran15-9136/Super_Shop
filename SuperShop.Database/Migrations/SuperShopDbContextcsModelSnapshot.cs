@@ -82,6 +82,9 @@ namespace SuperShop.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Password")
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("Id");
 
                     b.HasIndex("DepartmentId");
@@ -101,6 +104,9 @@ namespace SuperShop.Migrations
 
                     b.Property<string>("Code")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<byte[]>("Image")
+                        .HasColumnType("varbinary(max)");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -138,7 +144,7 @@ namespace SuperShop.Migrations
             modelBuilder.Entity("SuperShop.Models.EntityModels.Employee", b =>
                 {
                     b.HasOne("SuperShop.Models.EntityModels.Department", "Department")
-                        .WithMany("Employees")
+                        .WithMany()
                         .HasForeignKey("DepartmentId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();

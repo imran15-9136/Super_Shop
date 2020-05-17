@@ -5,7 +5,7 @@
         <h1>Product Add</h1>
     </div>
     <div class="card-body">
-        <form method="post">
+        <form method="post" asp-action="Create" enctype="multipart/form-data" >
             <div>
                 <label for="CategoryId">Product Catagory</label>
                 <select type="text" asp-for="CategoryId" asp-items="Model.ProductCatagoryItem" class="form-control">
@@ -33,6 +33,11 @@
             <div>
                 <label for="Address">Price</label>
                 <input type="text" asp-for="Price" class="form-control" />
+            </div>
+            <div>
+                <label for="Image">Image</label>
+                <input type="file" asp-for="Image" class="form-control" />
+                <span asp-validation-for="Image" class="alert-danger"></span>
             </div>
 
             <div>

@@ -33,7 +33,7 @@ namespace SuperShop.Controllers
         //Customer/Create
         public IActionResult Create()
         {
-            //CustomerCreateViewModel customer = new CustomerCreateViewModel();
+            CustomerCreateViewModel customer = new CustomerCreateViewModel();
             //customer.CustomerList = _customerManager
             //                        .GetAll()
             //                        .Select(c => _mapper.Map<CustomerResponseModel>(c)).ToList();
@@ -58,6 +58,10 @@ namespace SuperShop.Controllers
         //Customer/List
         public IActionResult List()
         {
+            //CustomerCreateViewModel customer = new CustomerCreateViewModel();
+            //customer.CustomerList = _customerManager
+            //                                .GetAll().Select(customer => _mapper.Map<CustomerResponseModel>(customer)).ToList();
+
             ICollection<Customer> customer = _customerManager.GetAll();
             return View(customer);
         }

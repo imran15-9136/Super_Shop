@@ -16,6 +16,7 @@ using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using SuperShop.Database;
 
+
 namespace SuperShop
 {
     public class Startup
@@ -44,13 +45,19 @@ namespace SuperShop
             services.AddTransient<IEmployeeManager, EmployeeManager>();
             services.AddTransient<IEmployeeRepositories, EmployeeRepositories>();
 
+            services.AddTransient<IDepartmentManager, DepartmentManager>();
+            services.AddTransient<IDepartmentRepositories, DepartmentRepositories>();
+
             services.AddTransient<DbContext, SuperShopDbContext>();
+
+            //services.Configure<StripeSetting>(Configuration.GetSection("Stripe"));
             services.AddAutoMapper(typeof(Startup).Assembly);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            //StripeConfiguration.SetApiKey(Configuration.GetSection("Stripe")["SecretKey"]);
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

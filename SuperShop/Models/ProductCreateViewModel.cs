@@ -14,6 +14,7 @@ namespace SuperShop.Models
         public int Quantity { get; set; }
         public string Code { get; set; }
         public int? CategoryId { get; set; }
+        public byte[] Image { get; set; }
         public ICollection<ProductResponseModel> Products { get; set; }
         public ICollection<SelectListItem> ProductCatagoryItem { get; set; }
     }

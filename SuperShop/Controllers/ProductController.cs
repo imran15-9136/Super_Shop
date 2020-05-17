@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using SuperShop.BLL;
@@ -41,18 +44,28 @@ namespace SuperShop.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(ProductCreateViewModel entity)
+        public async Task<IActionResult> Create(ProductCreateViewModel entity, IFormFile Image)
         {
             if (ModelState.IsValid)
             {
                 Product product = new Product()
-                {
+                { 
                     Name = entity.Name,
-                    Code = entity.Code,
-                    Price = entity.Price,
-                    Quantity = entity.Quantity,
-                  
+                    Quantity=entity.Quantity,
+                    Code=entity.Code,
+                    Price=entity.Price,
+                    CategoryId=entity.CategoryId
                 };
+
+                if (Image.Length > 0)
+                {
+                    using (MemoryStream stream = new MemoryStream())
+                    {
+                        await Image.CopyToAsync(stream);
+                        product.Image = stream.ToArray();
+                    }
+                }
+
                 bool isSave = _productManager.Add(product);
                 if (isSave)
                 {
@@ -104,6 +117,6 @@ namespace SuperShop.Controllers
                 }
             }
             return RedirectToAction("List");
-        }
+        }           
     }
 }

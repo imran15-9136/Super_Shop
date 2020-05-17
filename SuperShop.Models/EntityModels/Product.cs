@@ -13,6 +13,7 @@ namespace SuperShop.Models.EntityModels
         public string Price { get; set; }
         public int Quantity { get; set; }
         public string Code { get; set; }
+        public byte[] Image { get; set; }
         public int? CategoryId { get; set; }
         public ProductCatagory Category { get; set; }
 

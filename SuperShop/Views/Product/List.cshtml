@@ -1,33 +1,47 @@
 ﻿@model ICollection<SuperShop.Models.EntityModels.Product>
 
-<div class="card-body">
-    <h1>Product List</h1>
-    <table class="table table-bordered table-hover table-responsive">
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Code</th>
-                <th>Quantity</th>
-                <th>Price</th>
-                <th>Action</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var product in Model)
-            {
+    <div class="card-body">
+        <h1>Product List</h1>
+        <p>
+            <a class="collapse-item" asp-controller="Product" asp-action="Create">Add Product</a>
+        </p>
+        <table class="table table-bordered table-hover table-responsive">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Code</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var product in Model)
+                {
                 <tr>
                     <td>@product.Name</td>
                     <td>@product.Code</td>
                     <td>@product.Quantity</td>
                     <td>@product.Price</td>
                     <td>
+                        @if (product.Image != null)
+                        {
+                            var base64 = Convert.ToBase64String(product.Image);
+                            var imgsrc = string.Format("data:image/png;base64,{0}", base64);
+                            <img src='@imgsrc' style="max-width:100px;max-height:100px" />
+                        }
+                    </td>
+                    <td>
                         <a asp-controller="Product" asp-action="Edit" asp-route-id="@product.Id" class="btn btn-primary">Edit</a>
                     </td>
                     <td>
                         <a asp-controller="Product" asp-action="Delete" asp-route-id="@product.Id" class="btn btn-danger">Delete</a>
                     </td>
+                    @*<td>
+                        <a asp-controller="Product" asp-action="Payment" asp-route-id="@product.Id" class="btn btn-primary">Pay</a>
+                    </td>*@
                 </tr>
-            }
-        </tbody>
-    </table>
-</div>
+                }
+            </tbody>
+        </table>
+    </div>

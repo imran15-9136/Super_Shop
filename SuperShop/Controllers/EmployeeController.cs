@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using SuperShop.BLL.Abstraction;
 using SuperShop.Models;
 using SuperShop.Models.EntityModels;
@@ -15,47 +16,50 @@ namespace SuperShop.Controllers
     public class EmployeeController : Controller
     {
         public IEmployeeManager _employeeManagerl;
+        public IDepartmentManager _departmentManager;
         IMapper _maper;
-        public EmployeeController(IEmployeeManager employeeManager, IMapper mapper)
+        public EmployeeController(IEmployeeManager employeeManager, IMapper mapper, IDepartmentManager departmentManager)
         {
             _employeeManagerl = employeeManager;
             _maper = mapper;
+            _departmentManager = departmentManager;
         }
-        
         public IActionResult Create()
         {
-            return View();
+            EmployeeCreateViewModel employee = new EmployeeCreateViewModel();
+            employee.DepartmentItems = _departmentManager.GetAll()
+                                                        .Select(Department => new SelectListItem()
+                                                        {
+                                                            Text = Department.Name,
+                                                            Value = Department.Id.ToString()
+                                                        }).ToList();
+            return View(employee);
         }
         [HttpPost]
-        public async Task<IActionResult> Create(EmployeeCreateViewModel model, List<IFormFile> Image)
+        public async Task<IActionResult> Create(EmployeeCreateViewModel model, IFormFile Image)
         {
             Employee employee = _maper.Map<Employee>(model);
 
             if (ModelState.IsValid)
             {
-                foreach (var item in Image)
-                {
-                    if (item.Length > 0)
+                    if (Image.Length > 0)
                     {
                         using (MemoryStream stream = new MemoryStream())
                         {
-                            await item.CopyToAsync(stream);
+                            await Image.CopyToAsync(stream);
                             employee.Image = stream.ToArray();
                         }
                     }
-                }
                 bool isvalid = _employeeManagerl.Add(employee);
                 return RedirectToAction("List");
             }
             return View();
         }
-
         public IActionResult List()
         {
             ICollection<Employee> employees= _employeeManagerl.GetAll();
             return View(employees);
         }
-
         public IActionResult Edit(int? id)
         {
             if(id!=null && id > 0)
@@ -78,7 +82,6 @@ namespace SuperShop.Controllers
             }
             return View(employee);
         }
-
         public IActionResult Delete(int? id)
         {
             if (id != null)

@@ -24,6 +24,14 @@
     <ProjectReference Include="..\SuperShop.Models\SuperShop.Models.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\css\Frontend\" />
+    <Folder Include="wwwroot\img\Frontend\" />
+    <Folder Include="wwwroot\js\Frontend\" />
+    <Folder Include="wwwroot\fonts\" />
+    <Folder Include="wwwroot\scss\Frontend\" />
+  </ItemGroup>
+
 
 
 </Project>
