@@ -58,7 +58,11 @@ namespace SuperShop.Controllers
         //Customer/List
         public IActionResult List()
         {
-            ICollection<Customer> customer = _customerManager.GetAll();
+
+            CustomerCreateViewModel customer = new CustomerCreateViewModel();
+            customer.CustomerList = _customerManager.GetAll().Select(c => _mapper.Map<CustomerResponseModel>(c)).ToList();
+          
+            //ICollection<Customer> customer = _customerManager.GetAll();
             return View(customer);
         }
 
