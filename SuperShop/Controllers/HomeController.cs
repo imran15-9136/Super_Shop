@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using SuperShop.Models;
+using SuperShop.Models.EntityModels;
 
 namespace SuperShop.Controllers
 {
@@ -25,6 +26,19 @@ namespace SuperShop.Controllers
 
         public IActionResult Login()
         {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult Login(string name, string password)
+        {
+            Employee employee = new Employee();
+            if(name != null && password != null)
+            {
+                if(employee.Password == password && employee.Name == name)
+                {
+                    return View("Dashboard");
+                }
+            }
             return View();
         }
 
