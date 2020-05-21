@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Customer>
+@model IEnumerable<Customer>
 
 @{
     ViewBag.Title = "Customer List";
@@ -31,16 +31,16 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Name)
+                @item.Name
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Phone)
+                @item.Phone
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Email)
+                @item.Email
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Address)
+                @item.Address
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-primary">Edit</a> |
