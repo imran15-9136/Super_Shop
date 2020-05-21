@@ -81,6 +81,11 @@ namespace SuperShop
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
+            //app.UseMvcWithDefaultRoute();
+            //app.UseMvc(route =>
+            //{
+            //    route.MapRoute("default", "{controller}/{action}/{id}");
+            //});
         }
     }
 }
