@@ -80,7 +80,6 @@ namespace SuperShop.Controllers
         [HttpPost]
         public IActionResult Edit(Customer customer)
         {
-
             bool isSave = _customerManager.Update(customer);
                 if (isSave)
                 {

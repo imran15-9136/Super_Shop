@@ -1,0 +1,17 @@
+﻿.visual {
+    opacity: 1 !important;
+    border-radius: 10px;
+}
+
+.card-body ul li {
+    list-style: none;
+    vertical-align: middle;
+    font-size: 18px;
+    border: 2px solid turquoise;
+    width: 80%;
+    height: 40px;
+    margin: 5px auto;
+    text-align: left;
+    /* opacity: 0; */
+    transition: opacity 0.5s ease-in-out;
+}
