@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using SuperShop.Models;
@@ -13,13 +14,20 @@ namespace SuperShop.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        IMapper _mapper;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, IMapper mapper)
         {
             _logger = logger;
+            _mapper = mapper;
         }
 
         public IActionResult Index()
+        {
+            return View();
+        }
+
+        public IActionResult Dashboard()
         {
             return View();
         }
@@ -29,14 +37,15 @@ namespace SuperShop.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult Login(string name, string password)
+        public IActionResult Login(EmployeeCreateViewModel model)
         {
-            Employee employee = new Employee();
-            if(name != null && password != null)
+            Employee employee = _mapper.Map<Employee>(model);
+
+            if (ModelState.IsValid)
             {
-                if(employee.Password == password && employee.Name == name)
+                if(employee.Email == model.Email && employee.Password == model.Password)
                 {
-                    return View("Dashboard");
+                    return RedirectToAction("Dashboard");
                 }
             }
             return View();

@@ -1,6 +1,7 @@
 ﻿@model Product
 @{
     Layout = null;
+    ViewBag.Title = "Home";
 }
 <!DOCTYPE html>
 <html lang="zxx">
@@ -13,18 +14,24 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Super Shop</title>
 
-    <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
+    <environment include="Development">
+        <!-- Google Font -->
+        <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
 
-    <!-- Css Styles -->
-    <link rel="stylesheet" href="~/css/Frontend/bootstrap.min.css" type="text/css">
-    <link rel="stylesheet" href="~/css/font-awesome.min.css" type="text/css" />
-    <link rel="stylesheet" href="~/css/Frontend/elegant-icons.css" type="text/css" />
-    <link rel="stylesheet" href="~/css/Frontend/nice-select.css" type="text/css" />
-    <link rel="stylesheet" href="~/css/Frontend/jquery-ui.min.css" type="text/css" />
-    <link rel="stylesheet" href="~/css/Frontend/owl.carousel.min.css" type="text/css" />
-    <link rel="stylesheet" href="~/css/Frontend/slicknav.min.css" type="text/css" />
-    <link rel="stylesheet" href="~/css/Frontend/style.css" type="text/css" />
+        <!-- Css Styles -->
+        <link rel="stylesheet" href="~/css/Frontend/bootstrap.min.css" type="text/css">
+        <link rel="stylesheet" href="~/css/font-awesome.min.css" type="text/css" />
+        <link rel="stylesheet" href="~/css/Frontend/elegant-icons.css" type="text/css" />
+        <link rel="stylesheet" href="~/css/Frontend/nice-select.css" type="text/css" />
+        <link rel="stylesheet" href="~/css/Frontend/jquery-ui.min.css" type="text/css" />
+        <link rel="stylesheet" href="~/css/Frontend/owl.carousel.min.css" type="text/css" />
+        <link rel="stylesheet" href="~/css/Frontend/slicknav.min.css" type="text/css" />
+        <link rel="stylesheet" href="~/css/Frontend/style.css" type="text/css" />
+    </environment>
+    <environment include="Staging,Production">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    </environment>
+    
 </head>
 
 <body>
@@ -37,7 +44,7 @@
     <div class="humberger__menu__overlay"></div>
     <div class="humberger__menu__wrapper">
         <div class="humberger__menu__logo">
-            <a href="#"><img src="~/img/Frontend/logo.png" alt=""></a>
+            <a href="#"><img src="~/img/Frontend/logo.png" alt="" asp-append-version="true"></a>
         </div>
         <div class="humberger__menu__cart">
             <ul>
@@ -48,7 +55,7 @@
         </div>
         <div class="humberger__menu__widget">
             <div class="header__top__right__language">
-                <img src="img/language.png" alt="">
+                <img src="img/language.png" alt="" asp-append-version="true">
                 <div>English</div>
                 <span class="arrow_carrot-down"></span>
                 <ul>
@@ -114,7 +121,7 @@
                                 <a href="#"><i class="fa fa-pinterest-p"></i></a>
                             </div>
                             <div class="header__top__right__language">
-                                <img src="img/language.png" alt="">
+                                <img src="img/language.png" alt="" asp-append-version="true">
                                 <div>English</div>
                                 <span class="arrow_carrot-down"></span>
                                 <ul>
@@ -135,7 +142,7 @@
             <div class="row">
                 <div class="col-lg-3">
                     <div class="header__logo">
-                        <a href="./index.html"><img src="img/logo.png" alt=""></a>
+                        <a href="./index.html"><img src="img/logo.png" alt="" asp-append-version="true"></a>
                     </div>
                 </div>
                 <div class="col-lg-6">
@@ -418,12 +425,12 @@
             <div class="row">
                 <div class="col-lg-6 col-md-6 col-sm-6">
                     <div class="banner__pic">
-                        <img src="img/Frontend/banner/banner-1.jpg" alt="">
+                        <img src="img/Frontend/banner/banner-1.jpg" alt="" asp-append-version="true">
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-6">
                     <div class="banner__pic">
-                        <img src="img/Frontend/banner/banner-2.jpg" alt="">
+                        <img src="img/Frontend/banner/banner-2.jpg" alt="" asp-append-version="true">
                     </div>
                 </div>
             </div>
@@ -441,7 +448,7 @@
                             <div class="latest-prdouct__slider__item">
                                 <a href="#" class="latest-product__item">
                                     <div class="latest-product__item__pic">
-                                        <img src="img/Frontend/latest-product/lp-1.jpg" alt="">
+                                        <img src="img/Frontend/latest-product/lp-1.jpg" alt="" asp-append-version="true">
                                     </div>
                                     <div class="latest-product__item__text">
                                         <h6>Crab Pool Security</h6>
@@ -450,7 +457,7 @@
                                 </a>
                                 <a href="#" class="latest-product__item">
                                     <div class="latest-product__item__pic">
-                                        <img src="img/Frontend/latest-product/lp-2.jpg" alt="">
+                                        <img src="img/Frontend/latest-product/lp-2.jpg" alt="" asp-append-version="true">
                                     </div>
                                     <div class="latest-product__item__text">
                                         <h6>Crab Pool Security</h6>
@@ -459,7 +466,7 @@
                                 </a>
                                 <a href="#" class="latest-product__item">
                                     <div class="latest-product__item__pic">
-                                        <img src="img/Frontend/latest-product/lp-3.jpg" alt="">
+                                        <img src="img/Frontend/latest-product/lp-3.jpg" alt="" asp-append-version="true">
                                     </div>
                                     <div class="latest-product__item__text">
                                         <h6>Crab Pool Security</h6>
@@ -470,7 +477,7 @@
                             <div class="latest-prdouct__slider__item">
                                 <a href="#" class="latest-product__item">
                                     <div class="latest-product__item__pic">
-                                        <img src="img/Frontend/latest-product/lp-1.jpg" alt="">
+                                        <img src="img/Frontend/latest-product/lp-1.jpg" alt="" asp-append-version="true">
                                     </div>
                                     <div class="latest-product__item__text">
                                         <h6>Crab Pool Security</h6>
@@ -479,7 +486,7 @@
                                 </a>
                                 <a href="#" class="latest-product__item">
                                     <div class="latest-product__item__pic">
-                                        <img src="img/Frontend/latest-product/lp-2.jpg" alt="">
+                                        <img src="img/Frontend/latest-product/lp-2.jpg" alt="" asp-append-version="true">
                                     </div>
                                     <div class="latest-product__item__text">
                                         <h6>Crab Pool Security</h6>
@@ -488,7 +495,7 @@
                                 </a>
                                 <a href="#" class="latest-product__item">
                                     <div class="latest-product__item__pic">
-                                        <img src="img/Frontend/latest-product/lp-3.jpg" alt="">
+                                        <img src="img/Frontend/latest-product/lp-3.jpg" alt="" asp-append-version="true">
                                     </div>
                                     <div class="latest-product__item__text">
                                         <h6>Crab Pool Security</h6>
@@ -506,7 +513,7 @@
                             <div class="latest-prdouct__slider__item">
                                 <a href="#" class="latest-product__item">
                                     <div class="latest-product__item__pic">
-                                        <img src="img/Frontend/latest-product/lp-1.jpg" alt="">
+                                        <img src="img/Frontend/latest-product/lp-1.jpg" alt="" asp-append-version="true">
                                     </div>
                                     <div class="latest-product__item__text">
                                         <h6>Crab Pool Security</h6>
@@ -515,7 +522,7 @@
                                 </a>
                                 <a href="#" class="latest-product__item">
                                     <div class="latest-product__item__pic">
-                                        <img src="img/Frontend/latest-product/lp-2.jpg" alt="">
+                                        <img src="img/Frontend/latest-product/lp-2.jpg" alt="" asp-append-version="true">
                                     </div>
                                     <div class="latest-product__item__text">
                                         <h6>Crab Pool Security</h6>
@@ -524,7 +531,7 @@
                                 </a>
                                 <a href="#" class="latest-product__item">
                                     <div class="latest-product__item__pic">
-                                        <img src="img/Frontend/latest-product/lp-3.jpg" alt="">
+                                        <img src="img/Frontend/latest-product/lp-3.jpg" alt="" asp-append-version="true">
                                     </div>
                                     <div class="latest-product__item__text">
                                         <h6>Crab Pool Security</h6>
@@ -535,7 +542,7 @@
                             <div class="latest-prdouct__slider__item">
                                 <a href="#" class="latest-product__item">
                                     <div class="latest-product__item__pic">
-                                        <img src="img/Frontend/latest-product/lp-1.jpg" alt="">
+                                        <img src="img/Frontend/latest-product/lp-1.jpg" alt="" asp-append-version="true">
                                     </div>
                                     <div class="latest-product__item__text">
                                         <h6>Crab Pool Security</h6>
@@ -544,7 +551,7 @@
                                 </a>
                                 <a href="#" class="latest-product__item">
                                     <div class="latest-product__item__pic">
-                                        <img src="img/Frontend/latest-product/lp-2.jpg" alt="">
+                                        <img src="img/Frontend/latest-product/lp-2.jpg" alt="" asp-append-version="true">
                                     </div>
                                     <div class="latest-product__item__text">
                                         <h6>Crab Pool Security</h6>
@@ -553,7 +560,7 @@
                                 </a>
                                 <a href="#" class="latest-product__item">
                                     <div class="latest-product__item__pic">
-                                        <img src="img/Frontend/latest-product/lp-3.jpg" alt="">
+                                        <img src="img/Frontend/latest-product/lp-3.jpg" alt="" asp-append-version="true">
                                     </div>
                                     <div class="latest-product__item__text">
                                         <h6>Crab Pool Security</h6>
@@ -571,7 +578,7 @@
                             <div class="latest-prdouct__slider__item">
                                 <a href="#" class="latest-product__item">
                                     <div class="latest-product__item__pic">
-                                        <img src="img/Frontend/latest-product/lp-1.jpg" alt="">
+                                        <img src="img/Frontend/latest-product/lp-1.jpg" alt="" asp-append-version="true">
                                     </div>
                                     <div class="latest-product__item__text">
                                         <h6>Crab Pool Security</h6>
@@ -580,7 +587,7 @@
                                 </a>
                                 <a href="#" class="latest-product__item">
                                     <div class="latest-product__item__pic">
-                                        <img src="img/Frontend/latest-product/lp-2.jpg" alt="">
+                                        <img src="img/Frontend/latest-product/lp-2.jpg" alt="" asp-append-version="true">
                                     </div>
                                     <div class="latest-product__item__text">
                                         <h6>Crab Pool Security</h6>
@@ -589,7 +596,7 @@
                                 </a>
                                 <a href="#" class="latest-product__item">
                                     <div class="latest-product__item__pic">
-                                        <img src="img/Frontend/latest-product/lp-3.jpg" alt="">
+                                        <img src="img/Frontend/latest-product/lp-3.jpg" alt="" asp-append-version="true">
                                     </div>
                                     <div class="latest-product__item__text">
                                         <h6>Crab Pool Security</h6>
@@ -600,7 +607,7 @@
                             <div class="latest-prdouct__slider__item">
                                 <a href="#" class="latest-product__item">
                                     <div class="latest-product__item__pic">
-                                        <img src="img/Frontend/latest-product/lp-1.jpg" alt="">
+                                        <img src="img/Frontend/latest-product/lp-1.jpg" alt="" asp-append-version="true">
                                     </div>
                                     <div class="latest-product__item__text">
                                         <h6>Crab Pool Security</h6>
@@ -609,7 +616,7 @@
                                 </a>
                                 <a href="#" class="latest-product__item">
                                     <div class="latest-product__item__pic">
-                                        <img src="img/Frontend/latest-product/lp-2.jpg" alt="">
+                                        <img src="img/Frontend/latest-product/lp-2.jpg" alt="" asp-append-version="true">
                                     </div>
                                     <div class="latest-product__item__text">
                                         <h6>Crab Pool Security</h6>
@@ -618,7 +625,7 @@
                                 </a>
                                 <a href="#" class="latest-product__item">
                                     <div class="latest-product__item__pic">
-                                        <img src="img/Frontend/latest-product/lp-3.jpg" alt="">
+                                        <img src="img/Frontend/latest-product/lp-3.jpg" alt="" asp-append-version="true">
                                     </div>
                                     <div class="latest-product__item__text">
                                         <h6>Crab Pool Security</h6>
@@ -662,7 +669,7 @@
                 <div class="col-lg-4 col-md-4 col-sm-6">
                     <div class="blog__item">
                         <div class="blog__item__pic">
-                            <img src="img/Frontend/blog/blog-2.jpg" alt="">
+                            <img src="img/Frontend/blog/blog-2.jpg" alt="" asp-append-version="true">
                         </div>
                         <div class="blog__item__text">
                             <ul>
@@ -677,7 +684,7 @@
                 <div class="col-lg-4 col-md-4 col-sm-6">
                     <div class="blog__item">
                         <div class="blog__item__pic">
-                            <img src="img/Frontend/blog/blog-3.jpg" alt="">
+                            <img src="img/Frontend/blog/blog-3.jpg" alt="" asp-append-version="true">
                         </div>
                         <div class="blog__item__text">
                             <ul>
@@ -700,7 +707,7 @@
                 <div class="col-lg-3 col-md-6 col-sm-6">
                     <div class="footer__about">
                         <div class="footer__about__logo">
-                            <a href="./index.html"><img src="img/Frontend/logo.png" alt=""></a>
+                            <a href="./index.html"><img src="img/Frontend/logo.png" alt="" asp-append-version="true"></a>
                         </div>
                         <ul>
                             <li>Address: 60-49 Road 11378 New York</li>
@@ -758,7 +765,7 @@
                                 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                             </p>
                         </div>
-                        <div class="footer__copyright__payment"><img src="img/Frontend/payment-item.png" alt=""></div>
+                        <div class="footer__copyright__payment"><img src="img/Frontend/payment-item.png" alt="" asp-append-version="true"></div>
                     </div>
                 </div>
             </div>

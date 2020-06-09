@@ -38,13 +38,13 @@
                             }
                         </td>
                         <td>
-                            <a asp-controller="Product" asp-action="Edit" asp-route-id="@product.Id" class="btn btn-primary">Edit</a>
+                            <a asp-controller="Product" asp-action="Edit" asp-route-id="@product.Id" class="btn btn-primary productEdit">Edit</a>
                         </td>
                         <td>
-                            <a asp-controller="Product" asp-action="Delete" asp-route-id="@product.Id" class="btn btn-danger">Delete</a>
+                            <a asp-controller="Product" asp-action="Delete" asp-route-id="@product.Id" class="btn btn-danger productDelete">Delete</a>
                         </td>
                         <td>
-                            <button type="button" id="add">Add To Curt</button>
+                            <button type="button" id="@product.Id" class="addtoCart" data-price="@product.Price" data-name="@product.Name">Add To Cart</button>
                         </td>
                         @*<td>
                     <a asp-controller="Product" asp-action="Payment" asp-route-id="@product.Id" class="btn btn-primary">Pay</a>
