@@ -58,9 +58,6 @@ namespace SuperShop.Controllers
         //Customer/List
         public IActionResult List()
         {
-            //CustomerCreateViewModel customer = new CustomerCreateViewModel();
-            //customer.CustomerList = _customerManager
-            //                                .GetAll().Select(customer => _mapper.Map<CustomerResponseModel>(customer)).ToList();
 
             ICollection<Customer> customer = _customerManager.GetAll();
             return View(customer);
@@ -83,7 +80,6 @@ namespace SuperShop.Controllers
         [HttpPost]
         public IActionResult Edit(Customer customer)
         {
-
             bool isSave = _customerManager.Update(customer);
                 if (isSave)
                 {

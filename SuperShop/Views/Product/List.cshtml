@@ -1,4 +1,10 @@
-﻿@model ICollection<SuperShop.Models.EntityModels.Product>
+﻿@model ICollection<Product>
+@{
+    ViewBag.title = "Product List";
+}
+@section Style{
+    <link type="stylesheet" href="~/css/Product/StyleSheet.css" />
+ }
 
     <div class="card-body">
         <h1>Product List</h1>
@@ -18,30 +24,44 @@
             <tbody>
                 @foreach (var product in Model)
                 {
-                <tr>
-                    <td>@product.Name</td>
-                    <td>@product.Code</td>
-                    <td>@product.Quantity</td>
-                    <td>@product.Price</td>
-                    <td>
-                        @if (product.Image != null)
-                        {
-                            var base64 = Convert.ToBase64String(product.Image);
-                            var imgsrc = string.Format("data:image/png;base64,{0}", base64);
-                            <img src='@imgsrc' style="max-width:100px;max-height:100px" />
-                        }
-                    </td>
-                    <td>
-                        <a asp-controller="Product" asp-action="Edit" asp-route-id="@product.Id" class="btn btn-primary">Edit</a>
-                    </td>
-                    <td>
-                        <a asp-controller="Product" asp-action="Delete" asp-route-id="@product.Id" class="btn btn-danger">Delete</a>
-                    </td>
-                    @*<td>
-                        <a asp-controller="Product" asp-action="Payment" asp-route-id="@product.Id" class="btn btn-primary">Pay</a>
-                    </td>*@
-                </tr>
+                    <tr id="tr">
+                        <td>@product.Name</td>
+                        <td>@product.Code</td>
+                        <td>@product.Quantity</td>
+                        <td>@product.Price</td>
+                        <td>
+                            @if (product.Image != null)
+                            {
+                                var base64 = Convert.ToBase64String(product.Image);
+                                var imgsrc = string.Format("data:image/png;base64,{0}", base64);
+                                <img src='@imgsrc' style="max-width:100px;max-height:100px" />
+                            }
+                        </td>
+                        <td>
+                            <a asp-controller="Product" asp-action="Edit" asp-route-id="@product.Id" class="btn btn-primary productEdit">Edit</a>
+                        </td>
+                        <td>
+                            <a asp-controller="Product" asp-action="Delete" asp-route-id="@product.Id" class="btn btn-danger productDelete">Delete</a>
+                        </td>
+                        <td>
+                            <button type="button" id="@product.Id" class="addtoCart" data-price="@product.Price" data-name="@product.Name">Add To Cart</button>
+                        </td>
+                        @*<td>
+                    <a asp-controller="Product" asp-action="Payment" asp-route-id="@product.Id" class="btn btn-primary">Pay</a>
+                </td>*@
+                    </tr>
                 }
+            <tr>
+                <ul id="list">
+                    <li id="item"><label></label></li>
+                </ul>
+            </tr>
             </tbody>
-        </table>
+                
+        </table>  
     </div>
+    
+
+@section Scripts{
+    <script src="~/js/Product/List.js"></script>
+}
