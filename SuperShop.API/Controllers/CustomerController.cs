@@ -19,11 +19,28 @@ namespace SuperShop.API.Controllers
         {
             _customerManager = customer;
         }
-            
+
         [HttpGet]
         public ICollection<Customer> GetCustomers()
         {
             return _customerManager.GetAll();
+        }
+
+        [HttpGet("{id}")]
+        public IActionResult GetCustomers(int id)
+        {
+            if (id == null)
+            {
+                return BadRequest("Id Not Found");
+            }
+            var customer = _customerManager.GetById(id);
+
+            if (customer == null)
+            {
+                return BadRequest("customer not found");
+            }
+
+            return Ok(customer);
         }
     }
 }

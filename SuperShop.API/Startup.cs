@@ -25,6 +25,7 @@ namespace SuperShop.API
         {
             services.AddControllersWithViews();
             SuperShop.Configuration.ConfigureServices.Configure(services);
+            services.AddMvc().AddXmlDataContractSerializerFormatters();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
