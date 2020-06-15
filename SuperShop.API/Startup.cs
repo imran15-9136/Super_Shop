@@ -8,16 +8,8 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using SuperShop.BLL;
-using SuperShop.BLL.Abstraction;
-using SuperShop.Repositories;
-using SuperShop.Repositories.Abstraction;
-using AutoMapper;
-using Microsoft.EntityFrameworkCore;
-using SuperShop.Database;
 
-
-namespace SuperShop
+namespace SuperShop.API
 {
     public class Startup
     {
@@ -31,22 +23,13 @@ namespace SuperShop
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            //services.AddDbContext<SuperShopDbContext>(options =>
-            //options.UseSqlServer(Configuration.GetConnectionString("connectionString")));
-            
             services.AddControllersWithViews();
             SuperShop.Configuration.ConfigureServices.Configure(services);
-
-            
-
-            //services.Configure<StripeSetting>(Configuration.GetSection("Stripe"));
-            services.AddAutoMapper(typeof(Startup).Assembly);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            //StripeConfiguration.SetApiKey(Configuration.GetSection("Stripe")["SecretKey"]);
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -70,11 +53,6 @@ namespace SuperShop
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
-            //app.UseMvcWithDefaultRoute();
-            //app.UseMvc(route =>
-            //{
-            //    route.MapRoute("default", "{controller}/{action}/{id}");
-            //});
         }
     }
 }

@@ -13,9 +13,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SuperShop.Database", "Super
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SuperShop.Models", "SuperShop.Models\SuperShop.Models.csproj", "{0F116C80-F8F7-4EFD-B909-9917660509B5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperShop.BLL.Abstraction", "SuperShop.BLL.Abstraction\SuperShop.BLL.Abstraction.csproj", "{7273FBB5-1B2F-43A6-A161-7CECFA604268}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SuperShop.BLL.Abstraction", "SuperShop.BLL.Abstraction\SuperShop.BLL.Abstraction.csproj", "{7273FBB5-1B2F-43A6-A161-7CECFA604268}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperShop.Repositories.Abstraction", "SuperShop.Repositories.Abstraction\SuperShop.Repositories.Abstraction.csproj", "{0A8C91B0-EFC2-4B90-9172-89A8B9870D54}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SuperShop.Repositories.Abstraction", "SuperShop.Repositories.Abstraction\SuperShop.Repositories.Abstraction.csproj", "{0A8C91B0-EFC2-4B90-9172-89A8B9870D54}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SuperShop.API", "SuperShop.API\SuperShop.API.csproj", "{571D5A3E-4C6F-4C22-9F00-0923AE24D02F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperShop.Configuration", "SuperShop.Configuration\SuperShop.Configuration.csproj", "{7DCEA489-8922-4B1D-9971-602469699AC3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +55,14 @@ Global
 		{0A8C91B0-EFC2-4B90-9172-89A8B9870D54}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0A8C91B0-EFC2-4B90-9172-89A8B9870D54}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0A8C91B0-EFC2-4B90-9172-89A8B9870D54}.Release|Any CPU.Build.0 = Release|Any CPU
+		{571D5A3E-4C6F-4C22-9F00-0923AE24D02F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{571D5A3E-4C6F-4C22-9F00-0923AE24D02F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{571D5A3E-4C6F-4C22-9F00-0923AE24D02F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{571D5A3E-4C6F-4C22-9F00-0923AE24D02F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7DCEA489-8922-4B1D-9971-602469699AC3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7DCEA489-8922-4B1D-9971-602469699AC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7DCEA489-8922-4B1D-9971-602469699AC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7DCEA489-8922-4B1D-9971-602469699AC3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

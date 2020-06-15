@@ -20,7 +20,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\SuperShop.BLL\SuperShop.BLL.csproj" />
+    <ProjectReference Include="..\SuperShop.BLL.Abstraction\SuperShop.BLL.Abstraction.csproj" />
+    <ProjectReference Include="..\SuperShop.Configuration\SuperShop.Configuration.csproj" />
     <ProjectReference Include="..\SuperShop.Models\SuperShop.Models.csproj" />
   </ItemGroup>
 
