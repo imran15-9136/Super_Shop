@@ -72,6 +72,16 @@ namespace SuperShop.Controllers
             }
             return View();
         }
+
+        public IActionResult Details(int? id)
+        {
+            if (id != null)
+            {
+                Employee employee = _employeeManagerl.GetById(id);
+                return View(employee);
+            }
+            return View();
+        }
         [HttpPost]
         public IActionResult Edit(Employee employee)
         {
