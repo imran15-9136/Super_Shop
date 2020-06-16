@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SuperShop.Database;
 using SuperShop.Models;
+using SuperShop.Models.RequestModel;
 using SuperShop.Repositories.Abstraction;
 using SuperShop.Repositories.Abstraction.Base;
 using System;
@@ -32,6 +33,11 @@ namespace SuperShop.Repositories
                 return GetFirstorDefault(customer=> customer.Id == id);
             }
             return null;
-        } 
+        }
+
+        public ICollection<Customer> GetbyRequest(CustomerRequestModel customer)
+        {
+            return _db.GetbyRequest(customer);
+        }
     }
 }

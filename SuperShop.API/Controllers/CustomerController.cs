@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SuperShop.BLL.Abstraction;
 using SuperShop.Models;
+using SuperShop.Models.RequestModel;
 
 namespace SuperShop.API.Controllers
 {
@@ -21,11 +22,12 @@ namespace SuperShop.API.Controllers
         }
 
         [HttpGet]
-        public ICollection<Customer> GetCustomers()
+        public ICollection<Customer> GetCustomers(CustomerRequestModel customer)
         {
-            return _customerManager.GetAll();
+            return _customerManager.GetbyRequest(customer);
         }
 
+        //api/customer/id
         [HttpGet("{id}")]
         public IActionResult GetCustomers(int id)
         {
@@ -37,7 +39,7 @@ namespace SuperShop.API.Controllers
 
             if (customer == null)
             {
-                return BadRequest("customer not found");
+                return NotFound();
             }
 
             return Ok(customer);

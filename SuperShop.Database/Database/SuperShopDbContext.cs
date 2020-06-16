@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SuperShop.Models;
 using SuperShop.Models.EntityModels;
+using SuperShop.Models.RequestModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,5 +22,6 @@ namespace SuperShop.Database
             string connectionString = "Server=DESKTOP-6HU487U; Database=SuperShop; Integrated Security=true";
             optionsBuilder.UseSqlServer(connectionString); 
         }
+
     }
 }
