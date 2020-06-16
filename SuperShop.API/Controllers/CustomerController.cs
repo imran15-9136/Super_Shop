@@ -22,9 +22,14 @@ namespace SuperShop.API.Controllers
         }
 
         [HttpGet]
-        public ICollection<Customer> GetCustomers(CustomerRequestModel customer)
+        public IActionResult GetCustomers([FromQuery]CustomerRequestModel customer)
         {
-            return _customerManager.GetbyRequest(customer);
+            var result = _customerManager.GetbyRequest(customer);
+            if (result == null)
+            {
+                return BadRequest();
+            }
+            return Ok(result);
         }
 
         //api/customer/id
