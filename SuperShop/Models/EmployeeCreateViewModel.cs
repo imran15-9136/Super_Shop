@@ -19,6 +19,7 @@ namespace SuperShop.Models
         public string Password { get; set; }
         public byte[] Image { get; set; }
         public int DepartmentId { get; set; }
+        public bool isDelete { get; set; }
         public ICollection<EmployeeResponseModel> EmployeeList { get; set; }
         public ICollection<SelectListItem> DepartmentItems { get; set; }
     }

@@ -15,6 +15,10 @@ namespace SuperShop.Models.EntityModels
         public byte[] Image { get; set; }
         public int DepartmentId { get; set; }
         public Department Department { get; set; }
-        //public ICollection<SelectListItem> DepartmentItems { get; set; }
+        public bool isDelete { get; set; }
+        public bool Delete()
+        {
+            return isDelete = true;
+        }
     }
 }
