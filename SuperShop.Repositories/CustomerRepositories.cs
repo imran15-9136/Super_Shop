@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SuperShop.Database;
 using SuperShop.Models;
+using SuperShop.Models.RequestModel;
 using SuperShop.Repositories.Abstraction;
 using SuperShop.Repositories.Abstraction.Base;
 using System;
@@ -32,6 +33,43 @@ namespace SuperShop.Repositories
                 return GetFirstorDefault(customer=> customer.Id == id);
             }
             return null;
-        } 
+        }
+
+        public ICollection<Customer> GetbyRequest(CustomerRequestModel customer)
+        {
+            var result = _db.Customers.AsQueryable();
+            
+            if(customer != null)
+            {
+                return result.ToList();
+            }
+
+            if(customer.Id > 0)
+            {
+                result = result.Where(c => c.Id == customer.Id);
+            }
+
+            if (!string.IsNullOrEmpty(customer.Name))
+            {
+                result = result.Where(c => c.Name.ToLower().Contains(customer.Name.ToLower()));
+            }
+
+            if(customer.isDelete != null)
+            {
+                result = result.Where(c => c.isDelete == customer.isDelete);
+            }
+
+            if (!string.IsNullOrEmpty(customer.Address))
+            {
+                result = result.Where(c => c.Address.ToLower().Contains(customer.Address.ToLower()));
+            }
+
+            if (!string.IsNullOrEmpty(customer.Phone))
+            {
+                result = result.Where(c => c.Phone.ToLower().Equals(customer.Phone.ToLower()));
+            }
+
+            return result.ToList();
+        }
     }
 }

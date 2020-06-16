@@ -1,6 +1,7 @@
 ﻿using SuperShop.BLL.Abstraction;
 using SuperShop.BLL.Abstraction.Base;
 using SuperShop.Models;
+using SuperShop.Models.RequestModel;
 using SuperShop.Repositories;
 using SuperShop.Repositories.Abstraction;
 using System;
@@ -26,5 +27,9 @@ namespace SuperShop.BLL
             return null;
         }
 
+        public ICollection<Customer> GetbyRequest(CustomerRequestModel customer)
+        {
+            return _customerRepositories.GetbyRequest(customer);
+        }
     }
 }

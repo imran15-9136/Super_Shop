@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using SuperShop.BLL.Abstraction;
 using SuperShop.Database;
 using SuperShop.Models;
+using SuperShop.Models.RequestModel;
 using SuperShop.Models.ResponseModel;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -62,6 +63,12 @@ namespace SuperShop.Controllers
             ICollection<Customer> customer = _customerManager.GetAll();
             return View(customer);
         }
+
+        //Customer/List/[Filturing]
+        //public IActionResult GetbyRequest([FromQuery]CustomerRequestModel customer)
+        //{
+        //    return _customerManager.GetbyRequest(customer);
+        //}S
 
         //Customer/Edit/id
         public IActionResult Edit(int? id)

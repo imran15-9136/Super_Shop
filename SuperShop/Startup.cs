@@ -31,24 +31,13 @@ namespace SuperShop
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllersWithViews();
-
-            services.AddTransient<ICustomerManager, CustomerManager>();
-            services.AddTransient<ICustomerRepositories, CustomerRepositories>();
+            //services.AddDbContext<SuperShopDbContext>(options =>
+            //options.UseSqlServer(Configuration.GetConnectionString("connectionString")));
             
-            services.AddTransient<IProductManager, ProductManager>();
-            services.AddTransient<IProductRepositories, ProductRepositories>();
+            services.AddControllersWithViews();
+            SuperShop.Configuration.ConfigureServices.Configure(services);
 
-            services.AddTransient<IProductCatagoryManager, ProductCatagoryManager>();
-            services.AddTransient<IProductCatagoryRepositories, ProductCatagoriesRepositories>();
-
-            services.AddTransient<IEmployeeManager, EmployeeManager>();
-            services.AddTransient<IEmployeeRepositories, EmployeeRepositories>();
-
-            services.AddTransient<IDepartmentManager, DepartmentManager>();
-            services.AddTransient<IDepartmentRepositories, DepartmentRepositories>();
-
-            services.AddTransient<DbContext, SuperShopDbContext>();
+            
 
             //services.Configure<StripeSetting>(Configuration.GetSection("Stripe"));
             services.AddAutoMapper(typeof(Startup).Assembly);

@@ -43,5 +43,18 @@ namespace SuperShop.Repositories.Abstraction.Base
         {
             return _db.Set<T>().FirstOrDefault(predicate);
         }
+
+        //public virtual ICollection<T> GetbyRequest(T entity)
+        //{
+        //    var result = _db.Set<T>().AsQueryable();
+        //    if (entity != null)
+        //    {
+        //        return result.ToList();
+        //    }
+
+        //    if(!string.IsNullOrEmpty())
+
+        //    return _db.Set<T>().ToList();
+        //}
     }
 }

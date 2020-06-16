@@ -88,6 +88,9 @@ namespace SuperShop.Migrations
                     b.Property<string>("Password")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<bool>("isDelete")
+                        .HasColumnType("bit");
+
                     b.HasKey("Id");
 
                     b.HasIndex("DepartmentId");
