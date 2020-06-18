@@ -38,11 +38,10 @@ namespace SuperShop.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(EmployeeCreateViewModel model, IFormFile Image)
         {
-            Employee employee = _maper.Map<Employee>(model);
-
             if (ModelState.IsValid)
             {
-                    if (Image.Length > 0)
+                Employee employee = _maper.Map<Employee>(model);
+                if (Image.Length > 0)
                     {
                         using (MemoryStream stream = new MemoryStream())
                         {
