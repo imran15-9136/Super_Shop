@@ -22,6 +22,5 @@ namespace SuperShop.Database
             string connectionString = "Server=DESKTOP-6HU487U; Database=SuperShop; Integrated Security=true";
             optionsBuilder.UseSqlServer(connectionString); 
         }
-
     }
 }

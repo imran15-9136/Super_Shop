@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SuperShop.BLL.Abstraction;
@@ -11,14 +12,17 @@ using SuperShop.Models.RequestModel;
 namespace SuperShop.API.Controllers
 {
     [Route("api/[controller]")]
+    //[Route("api/customer")]
     [ApiController]
     public class CustomerController : ControllerBase
     {
         ICustomerManager _customerManager;
+        IMapper _mapper;
 
-        public CustomerController(ICustomerManager customer)
+        public CustomerController(ICustomerManager customer, IMapper mapper)
         {
             _customerManager = customer;
+            _mapper = mapper;
         }
 
         [HttpGet]
@@ -48,6 +52,33 @@ namespace SuperShop.API.Controllers
             }
 
             return Ok(customer);
+        }
+
+        [HttpPost]
+        public IActionResult AddCustomer([FromBody]CustomerCreateDTO customer)
+        {
+            if (ModelState.IsValid)
+            {
+                var customerEntity = _mapper.Map<Customer>(customer);
+
+                bool isSaved = _customerManager.Add(customerEntity);
+
+                if (isSaved)
+                {
+                    customer.Id = customerEntity.Id;
+
+                    return Ok(customer);
+                }
+                else
+                {
+                    return BadRequest("Customer is Invalid");
+                }
+            }
+            else
+            {
+                return BadRequest(ModelState);
+            }
+            
         }
     }
 }

@@ -33,7 +33,7 @@ namespace SuperShop
         {
             //services.AddDbContext<SuperShopDbContext>(options =>
             //options.UseSqlServer(Configuration.GetConnectionString("connectionString")));
-            
+
             services.AddControllersWithViews();
             SuperShop.Configuration.ConfigureServices.Configure(services);
 
