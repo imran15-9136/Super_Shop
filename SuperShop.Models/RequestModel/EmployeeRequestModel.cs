@@ -1,10 +1,11 @@
-﻿using System;
+﻿using SuperShop.Models.EntityModels;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace SuperShop.Models.ResponseModel
+namespace SuperShop.Models.RequestModel
 {
-    public class EmployeeResponseModel
+    public class EmployeeRequestModel
     {
         public int Id { get; set; }
         public string Name { get; set; }

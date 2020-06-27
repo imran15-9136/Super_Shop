@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using SuperShop.Models;
+using SuperShop.Models.EntityModels;
 using SuperShop.Models.RequestModel;
 using System;
 using System.Collections.Generic;
@@ -13,6 +14,7 @@ namespace SuperShop.API.AutoMapperProfile
         public SuperShopAPIAutoMapperProfile()
         {
             CreateMap<CustomerCreateDTO, Customer>();
+            CreateMap<EmployeeCreateDTO, Employee>();
         }
     }
 }
