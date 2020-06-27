@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Text;
 
-namespace SuperShop.Models.ResponseModel
+namespace SuperShop.Models.RequestModel
 {
-    public class EmployeeResponseModel
+    public class EmployeeCreateDTO
     {
         public int Id { get; set; }
+        [Required]
         public string Name { get; set; }
         public string Designation { get; set; }
         public string Email { get; set; }
