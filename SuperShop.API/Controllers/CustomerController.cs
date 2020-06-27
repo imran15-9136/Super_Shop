@@ -31,7 +31,7 @@ namespace SuperShop.API.Controllers
             var result = _customerManager.GetbyRequest(customer);
             if (result == null)
             {
-                return BadRequest();
+                return BadRequest("Customer Not Found");
             }
             return Ok(result);
         }

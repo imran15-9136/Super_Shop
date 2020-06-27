@@ -24,9 +24,14 @@ namespace SuperShop.API.Controllers
         }
 
         [HttpGet]
-        public ICollection<Employee> Getall()
+        public IActionResult GetEmployee([FromQuery] EmployeeRequestModel employee)
         {
-            return _employeeManager.GetAll();
+            var employeeEntity = _employeeManager.GetByRequest(employee);
+            if (employee == null)
+            {
+                return BadRequest("Employee Not Found");
+            }
+            return Ok(employee);
         }
 
         [HttpGet("id")]
@@ -44,8 +49,8 @@ namespace SuperShop.API.Controllers
             return Ok(employee);
         }
 
-        [HttpPost]
-        public IActionResult AddEmployee(EmployeeCreateDTO employee)
+         [HttpPost]
+        public IActionResult AddEmployee([FromBody]EmployeeCreateDTO employee)
         {
             if (ModelState.IsValid)
             {

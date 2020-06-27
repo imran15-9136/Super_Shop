@@ -52,9 +52,12 @@ namespace SuperShop.Repositories.Abstraction.Base
         //        return result.ToList();
         //    }
 
-        //    if(!string.IsNullOrEmpty())
+        //    if (!string.IsNullOrEmpty(entity.Name))
+        //    {
+        //        var result = result.Where(c => c.Name.Tolower().Contains(entity.Name.Tolower()));
+        //    }
 
-        //    return _db.Set<T>().ToList();
-        //}
+        //        return _db.Set<T>().ToList();
+        }
     }
 }
