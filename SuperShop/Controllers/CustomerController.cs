@@ -65,10 +65,15 @@ namespace SuperShop.Controllers
         }
 
         //Customer/List/[Filturing]
-        //public IActionResult GetbyRequest([FromQuery]CustomerRequestModel customer)
-        //{
-        //    return _customerManager.GetbyRequest(customer);
-        //}S
+        public IActionResult GetbyRequest([FromQuery]CustomerRequestModel customer)
+        {
+            var customerEntity =  _customerManager.GetbyRequest(customer);
+            if(customerEntity == null)
+            {
+                return View("Customer Not Found");
+            }
+            return View(customerEntity);
+        }
 
         //Customer/Edit/id
         public IActionResult Edit(int? id)

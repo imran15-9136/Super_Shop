@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using SuperShop.BLL.Abstraction;
 using SuperShop.Models;
 using SuperShop.Models.EntityModels;
+using SuperShop.Models.RequestModel;
 
 namespace SuperShop.Controllers
 {
@@ -58,6 +59,16 @@ namespace SuperShop.Controllers
         {
             ICollection<Employee> employees= _employeeManagerl.GetAll();
             return View(employees);
+        }
+
+        public IActionResult GetByRequest([FromQuery] EmployeeRequestModel employee)
+        {
+            var employeeEntity = _employeeManagerl.GetByRequest(employee);
+            if (employee == null)
+            {
+                return View("Employee Not Found");
+            }
+            return View(employeeEntity);
         }
         public IActionResult Edit(int? id)
         {
