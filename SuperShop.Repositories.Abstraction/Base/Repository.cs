@@ -58,6 +58,6 @@ namespace SuperShop.Repositories.Abstraction.Base
         //    }
 
         //        return _db.Set<T>().ToList();
-        }
+        //}
     }
 }

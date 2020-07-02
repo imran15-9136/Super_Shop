@@ -37,7 +37,7 @@ namespace SuperShop.API.Controllers
         }
 
         //api/customer/id
-        [HttpGet("{id}")]
+        [HttpGet("{id}", Name = "GetbyId")]
         public IActionResult GetCustomers(int id)
         {
             if (id == null)
@@ -50,7 +50,6 @@ namespace SuperShop.API.Controllers
             {
                 return NotFound();
             }
-
             return Ok(customer);
         }
 
@@ -67,7 +66,7 @@ namespace SuperShop.API.Controllers
                 {
                     customer.Id = customerEntity.Id;
 
-                    return Ok(customer);
+                    return CreatedAtRoute("GetbyId", new { id = customer.Id}, customer);
                 }
                 else
                 {
