@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using SuperShop.BLL.Abstraction;
 using SuperShop.Models;
@@ -105,6 +106,64 @@ namespace SuperShop.API.Controllers
                 else
                 {
                     return BadRequest("Update Failed");
+                }
+            }
+            catch(Exception ex)
+            {
+                return BadRequest(ex);
+            }
+        }
+        
+        [HttpPatch("{id}")]
+        public IActionResult PatchCustomer(int id, [FromBody] JsonPatchDocument<CustomerUpdateDTO> customerDto)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+
+            var customer = _customerManager.GetById(id);
+
+            if (customer == null)
+            {
+                return NotFound();
+            }
+
+            var existingCustomer =  _mapper.Map<CustomerUpdateDTO>(customer);
+            customerDto.ApplyTo(existingCustomer);
+
+            _mapper.Map(existingCustomer, customer);
+
+            bool isUpdate = _customerManager.Update(customer);
+            if (isUpdate)
+            {
+                return Ok();
+            }
+            else
+            {
+                return BadRequest("Update Failed");
+            }
+        }
+
+        [HttpDelete("{id}")]
+        public IActionResult DeleteCustomer(int id)
+        {
+            try
+            {
+                var customer = _customerManager.GetById(id);
+                if (customer == null)
+                {
+                    return NotFound();
+                }
+
+                bool isDelete = _customerManager.Remove(customer);
+                if (isDelete)
+                {
+                    return Ok();
+                }
+                else
+                {
+                    return BadRequest();
                 }
             }
             catch(Exception ex)
