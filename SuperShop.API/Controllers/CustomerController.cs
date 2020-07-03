@@ -77,7 +77,40 @@ namespace SuperShop.API.Controllers
             {
                 return BadRequest(ModelState);
             }
-            
+        }
+
+        [HttpPut("{id}")]
+        public IActionResult UpdateCustomer(int id, [FromBody] CustomerUpdateDTO customerDTO)
+        {
+            try
+            {
+                var existingCustomer = _customerManager.GetById(id);
+                if (existingCustomer == null)
+                {
+                    return NotFound();
+                }
+
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest("Customer Not Found");
+                }
+
+                var customer = _mapper.Map(customerDTO, existingCustomer);
+                bool isUpdate = _customerManager.Update(customer);
+
+                if (isUpdate)
+                {
+                    return Ok(customer);
+                }
+                else
+                {
+                    return BadRequest("Update Failed");
+                }
+            }
+            catch(Exception ex)
+            {
+                return BadRequest(ex);
+            }
         }
     }
 }

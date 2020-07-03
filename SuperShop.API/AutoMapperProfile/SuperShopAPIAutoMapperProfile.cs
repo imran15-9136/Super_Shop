@@ -14,7 +14,9 @@ namespace SuperShop.API.AutoMapperProfile
         public SuperShopAPIAutoMapperProfile()
         {
             CreateMap<CustomerCreateDTO, Customer>();
+            CreateMap<CustomerUpdateDTO, Customer>();
             CreateMap<EmployeeCreateDTO, Employee>();
+            
         }
     }
 }
