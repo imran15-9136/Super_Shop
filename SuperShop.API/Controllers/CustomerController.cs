@@ -146,7 +146,7 @@ namespace SuperShop.API.Controllers
         }
 
         [HttpDelete("{id}")]
-        public IActionResult DeleteCustomer(int id)
+        public IActionResult DeleteCustomer([FromQuery]int id)
         {
             try
             {

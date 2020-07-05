@@ -35,7 +35,7 @@ namespace SuperShop
             //options.UseSqlServer(Configuration.GetConnectionString("connectionString")));
 
             services.AddControllersWithViews();
-            SuperShop.Configuration.ConfigureServices.Configure(services);
+            SuperShop.Configuration.ConfigureServices.Configure(services, Configuration);
 
             
 

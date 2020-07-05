@@ -11,6 +11,10 @@ namespace SuperShop.Database
 {
     public class SuperShopDbContext:DbContext
     {
+        public SuperShopDbContext(DbContextOptions options):base(options)
+        {
+
+        }
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<ProductCatagory> ProductCatagories { get; set; }
@@ -19,8 +23,8 @@ namespace SuperShop.Database
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             base.OnConfiguring(optionsBuilder);
-            string connectionString = "Server=DESKTOP-6HU487U; Database=SuperShop; Integrated Security=true";
-            optionsBuilder.UseSqlServer(connectionString); 
+            //string connectionString = "Server=DESKTOP-6HU487U; Database=SuperShop; Integrated Security=true";
+            //optionsBuilder.UseSqlServer(connectionString); 
         }
     }
 }

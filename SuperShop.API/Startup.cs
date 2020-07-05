@@ -28,7 +28,8 @@ namespace SuperShop.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-            SuperShop.Configuration.ConfigureServices.Configure(services);
+            SuperShop.Configuration.ConfigureServices.Configure(services,Configuration);
+
             services.AddMvc().AddXmlDataContractSerializerFormatters();
 
             services.AddAutoMapper(typeof(Startup).Assembly);
