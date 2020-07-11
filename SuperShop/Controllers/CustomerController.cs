@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using SuperShop.BLL.Abstraction;
 using SuperShop.Database;
@@ -17,11 +19,13 @@ namespace SuperShop.Controllers
     public class CustomerController : Controller
     {
         private readonly ICustomerManager _customerManager;
+        private readonly IHostingEnvironment hostingEnvironment;
         IMapper _mapper;
-        public CustomerController(ICustomerManager customerManager, IMapper mapper)
+        public CustomerController(ICustomerManager customerManager, IMapper mapper, IHostingEnvironment hostingEnvironment)
         {
             _customerManager = customerManager;
             _mapper = mapper;
+            this.hostingEnvironment = hostingEnvironment;
         }
         // GET: /<controller>/
 
@@ -44,14 +48,45 @@ namespace SuperShop.Controllers
         [HttpPost]
         public IActionResult Create(CustomerCreateViewModel model)
         {
-            Customer customer = _mapper.Map<Customer>(model);
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
-                bool isSave=_customerManager.Add(customer);
-                if (isSave)
+                string uniqueFilename = null;
+                if (model.Photo != null)
                 {
-                    return RedirectToAction("List","Customer",null);
+                    string uploadFolder = Path.Combine(hostingEnvironment.WebRootPath, "img");
+                    uniqueFilename = Guid.NewGuid().ToString() + "_" + model.Photo.FileName;
+                    string filePath = Path.Combine(uploadFolder, uniqueFilename);
+                    model.Photo.CopyTo(new FileStream(filePath, FileMode.Create));
                 }
+                Customer customer = new Customer
+                {
+                    Name = model.Name,
+                    Email = model.Email,
+                    Phone = model.Phone,
+                    Address = model.Address,
+                    PhotoPath = uniqueFilename
+                };
+
+                bool isAdd = _customerManager.Add(customer);
+                if (isAdd)
+                {
+                    return RedirectToAction("Details", new { id = customer.Id});
+                }
+                else
+                {
+                    return View();
+                }
+            }
+            return View();
+        }
+
+        //Customer/Details
+        public IActionResult Details(int id)
+        {
+            if (id != null)
+            {
+                Customer customer = _customerManager.GetById(id);
+                return View(customer);
             }
             return View();
         }

@@ -110,7 +110,7 @@ namespace SuperShop.Controllers
                 bool isValid = _employeeManagerl.Remove(employee);
                 if (isValid)
                 {
-                    RedirectToAction("List");
+                    return RedirectToAction("List");
                 }
             }
             return RedirectToAction("List");

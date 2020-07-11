@@ -11,7 +11,7 @@ namespace SuperShop.Database
 {
     public class SuperShopDbContext:DbContext
     {
-        public SuperShopDbContext(DbContextOptions options):base(options)
+        public SuperShopDbContext(DbContextOptions <SuperShopDbContext>options):base(options)
         {
 
         }
@@ -25,6 +25,11 @@ namespace SuperShop.Database
             base.OnConfiguring(optionsBuilder);
             //string connectionString = "Server=DESKTOP-6HU487U; Database=SuperShop; Integrated Security=true";
             //optionsBuilder.UseSqlServer(connectionString); 
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Seed();
         }
     }
 }
