@@ -7,6 +7,7 @@ using SuperShop.Repositories.Abstraction;
 using Microsoft.EntityFrameworkCore;
 using SuperShop.Database;
 using System.Linq;
+using SuperShop.Models.RequestModel;
 
 namespace SuperShop.Repositories
 {
@@ -31,6 +32,38 @@ namespace SuperShop.Repositories
                 return GetFirstorDefault(emp => emp.Id == id);
             }
             return null;
+        }
+
+        public ICollection<Employee> GetByRequest(EmployeeRequestModel employee)
+        {
+            var result = _db.Employees.AsQueryable();
+            
+            if (employee != null)
+            {
+                return result.ToList();
+            }
+
+            if(employee.Id > 0)
+            {
+                result = result.Where(c => c.Id == employee.Id);
+            }
+
+            if (!string.IsNullOrEmpty(employee.Name))
+            {
+                result = result.Where(c => c.Name.ToLower().Contains(employee.Name.ToLower()));
+            }
+
+            if (!string.IsNullOrEmpty(employee.Name))
+            {
+                result = result.Where(c => c.Email.ToLower().Contains(employee.Email.ToLower()));
+            }
+
+            if (!string.IsNullOrEmpty(employee.Designation))
+            {
+                result = result.Where(c => c.Designation.ToLower().Contains(employee.Designation.ToLower()));
+            }
+
+            return result.ToList();
         }
     }
 }

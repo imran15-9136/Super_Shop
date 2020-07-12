@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using SuperShop.BLL;
 using SuperShop.BLL.Abstraction;
@@ -11,8 +12,15 @@ namespace SuperShop.Configuration
 {
     public static class ConfigureServices
     {
-        public static void Configure(IServiceCollection services)
+        public static void Configure(IServiceCollection services, IConfiguration configruation)
         {
+            
+
+            services.AddDbContext<SuperShopDbContext>(options =>
+            {
+                options.UseSqlServer(configruation.GetSection("ConnectionString:DefaultConnection").Value);
+            });
+
             services.AddTransient<ICustomerManager, CustomerManager>();
             services.AddTransient<ICustomerRepositories, CustomerRepositories>();
 

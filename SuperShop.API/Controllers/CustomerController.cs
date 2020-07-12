@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using SuperShop.BLL.Abstraction;
 using SuperShop.Models;
@@ -31,13 +32,13 @@ namespace SuperShop.API.Controllers
             var result = _customerManager.GetbyRequest(customer);
             if (result == null)
             {
-                return BadRequest();
+                return BadRequest("Customer Not Found");
             }
             return Ok(result);
         }
 
         //api/customer/id
-        [HttpGet("{id}")]
+        [HttpGet("{id}", Name = "GetbyId")]
         public IActionResult GetCustomers(int id)
         {
             if (id == null)
@@ -50,7 +51,6 @@ namespace SuperShop.API.Controllers
             {
                 return NotFound();
             }
-
             return Ok(customer);
         }
 
@@ -67,7 +67,7 @@ namespace SuperShop.API.Controllers
                 {
                     customer.Id = customerEntity.Id;
 
-                    return Ok(customer);
+                    return CreatedAtRoute("GetbyId", new { id = customer.Id}, customer);
                 }
                 else
                 {
@@ -78,7 +78,98 @@ namespace SuperShop.API.Controllers
             {
                 return BadRequest(ModelState);
             }
-            
+        }
+
+        [HttpPut("{id}")]
+        public IActionResult UpdateCustomer(int id, [FromBody] CustomerUpdateDTO customerDTO)
+        {
+            try
+            {
+                var existingCustomer = _customerManager.GetById(id);
+                if (existingCustomer == null)
+                {
+                    return NotFound();
+                }
+
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest("Customer Not Found");
+                }
+
+                var customer = _mapper.Map(customerDTO, existingCustomer);
+                bool isUpdate = _customerManager.Update(customer);
+
+                if (isUpdate)
+                {
+                    return Ok(customer);
+                }
+                else
+                {
+                    return BadRequest("Update Failed");
+                }
+            }
+            catch(Exception ex)
+            {
+                return BadRequest(ex);
+            }
+        }
+        
+        [HttpPatch("{id}")]
+        public IActionResult PatchCustomer(int id, [FromBody] JsonPatchDocument<CustomerUpdateDTO> customerDto)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+
+            var customer = _customerManager.GetById(id);
+
+            if (customer == null)
+            {
+                return NotFound();
+            }
+
+            var existingCustomer =  _mapper.Map<CustomerUpdateDTO>(customer);
+            customerDto.ApplyTo(existingCustomer);
+
+            _mapper.Map(existingCustomer, customer);
+
+            bool isUpdate = _customerManager.Update(customer);
+            if (isUpdate)
+            {
+                return Ok();
+            }
+            else
+            {
+                return BadRequest("Update Failed");
+            }
+        }
+
+        [HttpDelete("{id}")]
+        public IActionResult DeleteCustomer([FromQuery]int id)
+        {
+            try
+            {
+                var customer = _customerManager.GetById(id);
+                if (customer == null)
+                {
+                    return NotFound();
+                }
+
+                bool isDelete = _customerManager.Remove(customer);
+                if (isDelete)
+                {
+                    return Ok();
+                }
+                else
+                {
+                    return BadRequest();
+                }
+            }
+            catch(Exception ex)
+            {
+                return BadRequest(ex);
+            }
         }
     }
 }

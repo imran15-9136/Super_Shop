@@ -35,9 +35,8 @@ namespace SuperShop
             //options.UseSqlServer(Configuration.GetConnectionString("connectionString")));
 
             services.AddControllersWithViews();
-            SuperShop.Configuration.ConfigureServices.Configure(services);
-
-            
+            //services.AddDbContext<SuperShopDbContext>();
+            SuperShop.Configuration.ConfigureServices.Configure(services, Configuration);
 
             //services.Configure<StripeSetting>(Configuration.GetSection("Stripe"));
             services.AddAutoMapper(typeof(Startup).Assembly);

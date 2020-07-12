@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SuperShop.Database;
 
 namespace SuperShop.Migrations
 {
     [DbContext(typeof(SuperShopDbContext))]
-    partial class SuperShopDbContextcsModelSnapshot : ModelSnapshot
+    [Migration("20200710150543_customer_model_update")]
+    partial class customer_model_update
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -1,6 +1,7 @@
 ﻿using SuperShop.BLL.Abstraction;
 using SuperShop.BLL.Abstraction.Base;
 using SuperShop.Models.EntityModels;
+using SuperShop.Models.RequestModel;
 using SuperShop.Repositories.Abstraction;
 using System;
 using System.Collections.Generic;
@@ -23,6 +24,11 @@ namespace SuperShop.BLL
                 return _employeeRepository.GetbyId(id);
             }
             return null;
+        }
+
+        public ICollection<Employee> GetByRequest(EmployeeRequestModel employee)
+        {
+            return _employeeRepository.GetByRequest(employee);
         }
     }
 }

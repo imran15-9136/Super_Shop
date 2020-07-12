@@ -9,7 +9,7 @@
     </div>
     <div class="card-body">
         <form method="post" asp-action="Create" enctype="multipart/form-data" >
-            <div>
+            <div class="form-group">
                 <label for="CategoryId">Product Catagory</label>
                 <select type="text" asp-for="CategoryId" asp-items="Model.ProductCatagoryItem" class="form-control">
                     <option value="">Select...</option>
@@ -17,29 +17,29 @@
                 <span asp-validation-for="CategoryId" class="alert-danger"></span>
             </div>
 
-            <div>
+            <div class="form-group">
                 <label for="Name">Product Name</label>
                 <input type="text" asp-for="Name" class="form-control" />
                 <span asp-validation-for="Name" class="alert-danger"></span>
             </div>
 
-            <div>
+            <div class="form-group">
                 <label for="Phone">Code</label>
                 <input type="text" asp-for="Code" class="form-control" />
             </div>
 
-            <div>
+            <div class="form-group">
                 <label for="Email">Quantity</label>
                 <input type="text" asp-for="Quantity" class="form-control" />
             </div>
 
-            <div>
+            <div class="form-group">
                 <label for="Address">Price</label>
                 <input type="text" asp-for="Price" class="form-control" />
             </div>
-            <div>
+            <div class="form-group">
                 <label for="Image">Image</label>
-                <input type="file" asp-for="Image" class="form-control" />
+                <input type="file" asp-for="Image" class="form-control-file" />
                 <span asp-validation-for="Image" class="alert-danger"></span>
             </div>
 

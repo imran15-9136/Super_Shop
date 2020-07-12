@@ -66,7 +66,7 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Custom Components:</h6>
                         <a class="collapse-item" asp-controller="Customer" asp-action="Create">Add Customer</a>
-                        <a class="collapse-item" asp-controller="Customer" asp-action="Edit">Edit</a>
+                        @*<a class="collapse-item" asp-controller="Customer" asp-action="Edit">Edit</a>*@
                         <a class="collapse-item" asp-controller="Customer" asp-action="List">Customer List</a>
                     </div>
                 </div>
@@ -80,9 +80,9 @@
                 </a>
                 <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Custom Utilities:</h6>
+                        <h6 class="collapse-header">Employee Utilities:</h6>
                         <a class="collapse-item" asp-controller="Employee" asp-action="Create">Add Employee</a>
-                        <a class="collapse-item" asp-controller="Employee" asp-action="Edit">Edit</a>
+                        @*<a class="collapse-item" asp-controller="Employee" asp-action="Edit">Edit</a>*@
                         <a class="collapse-item" asp-controller="Employee" asp-action="List">Employee List</a>
                     </div>
                 </div>
@@ -96,7 +96,7 @@
                 </a>
                 <div id="collapseProducts" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Custom Utilities:</h6>
+                        <h6 class="collapse-header">Product Utilities:</h6>
                         <a class="collapse-item" asp-controller="Product" asp-action="Create">Add Product</a>
                         <a class="collapse-item" asp-controller="Product" asp-action="List">Product List</a>
                     </div> 
@@ -111,7 +111,7 @@
                 </a>
                 <div id="collapseCatagory" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Custom Utilities:</h6>
+                        <h6 class="collapse-header">Product Catagory Utilities:</h6>
                         <a class="collapse-item" asp-controller="ProductCatagory" asp-action="Create">Add Catagory</a>
                         <a class="collapse-item" asp-controller="ProductCatagory" asp-action="List">Catagory List</a>
                     </div>
@@ -130,14 +130,14 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
                     <i class="fas fa-fw fa-football-ball"></i>
-                    <span>Product</span>
+                    <span>E-commerce</span>
                 </a>
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Add Product</h6>
-                        <a class="collapse-item" asp-controller="Product" asp-action="Add">Add</a>
-                        <a class="collapse-item" asp-controller="Product" asp-action="Edit">Register</a>
-                        <a class="collapse-item" asp-controller="Product" asp-action="List">List</a>
+                        <h6 class="collapse-header">E-commerce Summery</h6>
+                        <a class="collapse-item" asp-controller="Product" asp-action="Add">Order</a>
+                        <a class="collapse-item" asp-controller="Product" asp-action="Edit">Invoice</a>
+                        <a class="collapse-item" asp-controller="Product" asp-action="List">Report</a>
                     </div>
                 </div>
             </li>
