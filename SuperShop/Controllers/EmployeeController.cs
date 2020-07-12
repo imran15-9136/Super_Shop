@@ -85,9 +85,16 @@ namespace SuperShop.Controllers
 
         public IActionResult Details(int? id)
         {
+            Employee employee = _employeeManagerl.GetById(id.Value);
+            if (employee == null)
+            {
+                Response.StatusCode = 404;
+                return View("EmployeeNotFound", id.Value);
+            }
+            
             if (id != null)
             {
-                Employee employee = _employeeManagerl.GetById(id);
+                //Employee newEmployee = employee;
                 return View(employee);
             }
             return View();
