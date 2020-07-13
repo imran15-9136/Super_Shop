@@ -1,0 +1,15 @@
+﻿@model int;
+@{
+    ViewBag.Title = "Customer Not Found";
+}
+<div class="card shadow mb-4">
+    <div class="card-body">
+        <div class="alert alert-danger mt-1 mb-1">
+            <h4>404 Customer Not Found</h4>
+            <hr />
+            <h4>Customer with Id = @Model not found</h4>
+        </div>
+        <a asp-action="List" asp-controller="Customer" class="btn btn-outline-success">Go Back To The List</a>
+    </div>
+</div>
+

@@ -81,11 +81,19 @@ namespace SuperShop.Controllers
         }
 
         //Customer/Details
-        public IActionResult Details(int id)
+        public IActionResult Details(int? id)
         {
+            Customer customer = _customerManager.GetById(id.Value);
+            if (customer == null)
+            {
+                Response.StatusCode = 404;
+                return View("CustomerNotFound", id.Value);
+            }
+
+
             if (id != null)
             {
-                Customer customer = _customerManager.GetById(id);
+                
                 return View(customer);
             }
             return View();
