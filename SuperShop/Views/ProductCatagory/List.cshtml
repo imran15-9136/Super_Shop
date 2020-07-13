@@ -1,29 +1,42 @@
-﻿@model ICollection<ProductCatagory>
-@{ 
+﻿@model IEnumerable<ProductCatagory>
+@{
     ViewBag.Title = "Product Catagory List";
 }
 
-<div class="card-body">
-    <h1>Catagory List</h1>
-    <table class="table table-bordered table-hover table-responsive">
-        <thead>
-            <tr>
-                <th>Name</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var catagory in Model)
-            {
-                <tr>
-                    <td>@catagory.Name</td>
-                    <td>
-                        <a asp-controller="ProductCatagory" asp-action="Edit" asp-route-id="@catagory.Id" class="btn btn-primary">Edit</a>
-                    </td>
-                    <td>
-                        <a asp-controller="ProductCatagory" asp-action="Delete" asp-route-id="@catagory.Id" class="btn btn-danger">Delete</a>
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Product Catagory List</h6>
+    </div>
+    <div class="card-body">
+        <p>To Add product you have to add product catagory first.</p>
+
+
+            <table class="table table-hover table-responsive">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Name)
+                        </th>
+                    </tr>
+                </thead>
+
+
+                <tbody>
+                    @foreach (var catagory in Model)
+                    {
+                        <tr>
+                            <td>@catagory.Name</td>
+                            <td>
+                                <a asp-controller="ProductCatagory" asp-action="Edit" asp-route-id="@catagory.Id" class="btn btn-primary">Edit</a>
+                            </td>
+                            <td>
+                                <a asp-controller="ProductCatagory" asp-action="Delete" asp-route-id="@catagory.Id" class="btn btn-danger">Delete</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
 </div>
+</div>
+
