@@ -9,34 +9,37 @@
     </div>
     <div class="card-body">
         <p>To Add product you have to add product catagory first.</p>
+        <p>
+            <a asp-action="Create" class="btn btn-primary">Create New</a>
+        </p>
 
 
-            <table class="table table-hover table-responsive">
-                <thead>
+        <table class="table table-hover table-responsive">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Name)
+                    </th>
+                </tr>
+            </thead>
+
+
+            <tbody>
+                @foreach (var catagory in Model)
+                {
                     <tr>
-                        <th>
-                            @Html.DisplayNameFor(model => model.Name)
-                        </th>
+                        <td>@catagory.Name</td>
+                        <td>
+                            <a asp-controller="ProductCatagory" asp-action="Edit" asp-route-id="@catagory.Id" class="btn btn-primary">Edit</a>
+                        </td>
+                        <td>
+                            <a asp-controller="ProductCatagory" asp-action="Delete" asp-route-id="@catagory.Id" class="btn btn-danger">Delete</a>
+                        </td>
                     </tr>
-                </thead>
+                }
+            </tbody>
+        </table>
 
-
-                <tbody>
-                    @foreach (var catagory in Model)
-                    {
-                        <tr>
-                            <td>@catagory.Name</td>
-                            <td>
-                                <a asp-controller="ProductCatagory" asp-action="Edit" asp-route-id="@catagory.Id" class="btn btn-primary">Edit</a>
-                            </td>
-                            <td>
-                                <a asp-controller="ProductCatagory" asp-action="Delete" asp-route-id="@catagory.Id" class="btn btn-danger">Delete</a>
-                            </td>
-                        </tr>
-                    }
-                </tbody>
-            </table>
-
-</div>
+    </div>
 </div>
 
