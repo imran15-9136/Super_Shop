@@ -4,73 +4,88 @@
     ViewBag.Title = "Employee List";
 }
 
-<h3>Employee List</h3>
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Employee List</h6>
+    </div>
+    <div class="card-body">
+        <p>Here is the list of employee.</p>
+        <!-- Circle Buttons (Default) -->
 
-<p>
-    <a asp-action="Create" class="btn btn-primary">Create New</a>
-</p>
-<div>
+        <p>
+            <a asp-action="Create" class="btn btn-primary">Create New</a>
+        </p>
+        <div>
 
-</div>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                <label>Name</label>
-            </th>
-            <th>
-                <lable>Designation</lable>
-            </th>
-            <th>
-                <label>Email</label>
-            </th>
-            <th>
-                <label>Department</label>
-            </th>
-            <th>
-                <label>Image</label>
-            </th>
-            <th>
-                <label>Action</label>
-            </th>
+        </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        <label>Name</label>
+                    </th>
+                    <th>
+                        <lable>Designation</lable>
+                    </th>
+                    <th>
+                        <label>Email</label>
+                    </th>
+                    <th>
+                        <label>Department</label>
+                    </th>
+                    <th>
+                        <label>Image</label>
+                    </th>
+                    <th>
+                        <label>Action</label>
+                    </th>
 
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Designation)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Email)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Department.Name)
-            </td>
-            <td>
-                @if (item.Image != null)
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
                 {
-                    var base64 = Convert.ToBase64String(item.Image);
-                    var imgsrc = string.Format("data:image/png;base64,{0}", base64);
-                    <img src='@imgsrc' style="max-width:100px;max-height:100px" />
-                }
-                @*<img src="~/img/Frontend/banner/banner-1.jpg" asp-append-version="true" />*@
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-primary">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-success">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
-            </td>
-        </tr>
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Designation)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Email)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Department.Name)
+                        </td>
+                        <td>
+                            @if (item.Image != null)
+                                    {
+                                        var base64 = Convert.ToBase64String(item.Image);
+                                        var imgsrc = string.Format("data:image/png;base64,{0}", base64);
+                                        var image = imgsrc ?? "~/img/noimage.jpg";
+                                <img src='@image' class="customerList"/>
+                            }
+                            @*<img src="~/img/Frontend/banner/banner-1.jpg" asp-append-version="true" />*@
+                        </td>
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-primary">Edit</a> |
+                            <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-success">Details</a> |
+                            <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
+                        </td>
+                    </tr>
 
-        }
-    </tbody>
-    @*@section Script{
-    <script src="~/js/Employee/Script.js"></script>
-    }*@
-</table>
+                }
+            </tbody>
+            @*@section Script{
+                <script src="~/js/Employee/Script.js"></script>
+                }*@
+        </table>
+
+    </div>
+</div>
+
+
+@section Style{
+    <link href="~/css/customer/CustomerEdit.css" rel="stylesheet" type="text/css" />
+}

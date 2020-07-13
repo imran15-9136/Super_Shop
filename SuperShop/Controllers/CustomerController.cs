@@ -118,7 +118,16 @@ namespace SuperShop.Controllers
                 Customer extingCustomer = _customerManager.GetById(id);
                 if (extingCustomer != null)
                 {
-                    return View(extingCustomer);
+                    CustomerEditViewModel editViewModel = new CustomerEditViewModel
+                    {
+                        Id = extingCustomer.Id,
+                        Name = extingCustomer.Name,
+                        Email = extingCustomer.Email,
+                        Phone = extingCustomer.Phone,
+                        Address = extingCustomer.Address,
+                        ExistingPhoto = extingCustomer.PhotoPath
+                    };
+                    return View(editViewModel);
                 }
             }
             return View();

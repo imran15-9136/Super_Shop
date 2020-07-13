@@ -4,50 +4,72 @@
     ViewBag.Title = "Customer List";
 }
 
-<h1>List</h1>
-<p>
-    <a asp-action="Create" class="btn btn-primary">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Phone)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Email)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Address)
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @item.Name
-            </td>
-            <td>
-                @item.Phone
-            </td>
-            <td>
-                @item.Email
-            </td>
-            <td>
-                @item.Address
-            </td>
-            <td>
-                <a asp-controller="Customer" asp-action="Edit" asp-route-id="@item.Id" class="btn btn-primary">Edit</a> |
-                <a asp-controller="Customer" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
-                @*@Html.ActionLink("View","edit","customer", new { id=item.Id});
-                <a href="@Url.Action("edit","customer", new { id=item.Id});" class="btn btn-primary">Edit</a>*@
-                
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Customer List</h6>
+    </div>
+    <div class="card-body">
+        <p>Here is your details. If you found your information is wrong please update your information to press edit button.</p>
+        <!-- Circle Buttons (Default) -->
+        <p>
+            <a asp-action="Create" class="btn btn-primary">Create New</a>
+        </p>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.PhotoPath)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Phone)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Email)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Address)
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    var photoPath = "~/img/" + (item.PhotoPath ?? "noimage.jpg");
+                    <tr>
+                        <td>
+                            <img src="@photoPath" class="customerList" asp-append-version="true" />
+                        </td>
+                        <td>
+                            <a asp-controller="Customer" asp-action="Details" asp-route-id="@item.Id">@item.Name</a>
+                        </td>
+                        <td>
+                            @item.Phone
+                        </td>
+                        <td>
+                            @item.Email
+                        </td>
+                        <td>
+                            @item.Address
+                        </td>
+                        <td>
+                            <a asp-controller="Customer" asp-action="Edit" asp-route-id="@item.Id" class="btn btn-primary">Edit</a> |
+                            <a asp-controller="Customer" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
+                            @*@Html.ActionLink("View","edit","customer", new { id=item.Id});
+                            <a href="@Url.Action("edit","customer", new { id=item.Id});" class="btn btn-primary">Edit</a>*@
+
+                        </td>
+                    </tr>
+
+                }
+            </tbody>
+        </table>
+
+    </div>
+</div>
+
+@section Style{
+       <link href="~/css/customer/CustomerEdit.css" rel="stylesheet" type="text/css"/>
+    }
