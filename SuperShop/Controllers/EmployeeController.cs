@@ -66,7 +66,8 @@ namespace SuperShop.Controllers
             var employeeEntity = _employeeManagerl.GetByRequest(employee);
             if (employee == null)
             {
-                return View("Employee Not Found");
+                Response.StatusCode = 404;
+                return View("EmployeeNotFound",employee.Id);
             }
             return View(employeeEntity);
         }
@@ -99,6 +100,7 @@ namespace SuperShop.Controllers
             }
             return View();
         }
+
         [HttpPost]
         public IActionResult Edit(Employee employee)
         {

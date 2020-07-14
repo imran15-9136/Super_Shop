@@ -14,8 +14,6 @@ namespace SuperShop.Configuration
     {
         public static void Configure(IServiceCollection services, IConfiguration configruation)
         {
-            
-
             services.AddDbContext<SuperShopDbContext>(options =>
             {
                 options.UseSqlServer(configruation.GetSection("ConnectionString:DefaultConnection").Value);
@@ -38,6 +36,5 @@ namespace SuperShop.Configuration
 
             services.AddTransient<DbContext, SuperShopDbContext>();
         }
-
     }
 }
