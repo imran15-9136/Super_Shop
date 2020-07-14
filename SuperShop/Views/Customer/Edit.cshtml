@@ -9,21 +9,25 @@
             <h4>Customer Edit</h4>
         </div>
         <div class="card-body">
-            <form method="post">
+            <form method="post" enctype="multipart/form-data">
+                <input type="hidden" asp-for="Id" />
+                <input type="hidden" asp-for="ExistingPhoto" />
                 <div class="form-group">
-                    <input asp-for="Id" type="hidden" />
                     <label for="Name">Name</label>
                     <input asp-for="Name" type="text" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
                 </div>
 
                 <div class="form-group">
                     <label for="Phone">Phone</label>
                     <input asp-for="Phone" type="tel" class="form-control" />
+                    <span asp-validation-for="Phone" class="text-danger"></span>
                 </div>
 
                 <div class="form-group">
                     <label for="Email">Email</label>
                     <input asp-for="Email" type="email" class="form-control" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
                 </div>
 
                 <div class="form-group">

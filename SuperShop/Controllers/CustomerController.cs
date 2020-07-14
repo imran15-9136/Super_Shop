@@ -50,14 +50,7 @@ namespace SuperShop.Controllers
         {
             if (ModelState.IsValid)
             {
-                string uniqueFilename = null;
-                if (model.Photo != null)
-                {
-                    string uploadFolder = Path.Combine(hostingEnvironment.WebRootPath, "img");
-                    uniqueFilename = Guid.NewGuid().ToString() + "_" + model.Photo.FileName;
-                    string filePath = Path.Combine(uploadFolder, uniqueFilename);
-                    model.Photo.CopyTo(new FileStream(filePath, FileMode.Create));
-                }
+                string uniqueFilename = ProcessUploadFile(model);
                 Customer customer = new Customer
                 {
                     Name = model.Name,
@@ -90,10 +83,8 @@ namespace SuperShop.Controllers
                 return View("CustomerNotFound", id.Value);
             }
 
-
             if (id != null)
             {
-                
                 return View(customer);
             }
             return View();
@@ -102,7 +93,6 @@ namespace SuperShop.Controllers
         //Customer/List
         public IActionResult List()
         {
-
             ICollection<Customer> customer = _customerManager.GetAll();
             return View(customer);
         }
@@ -119,6 +109,7 @@ namespace SuperShop.Controllers
         }
 
         //Customer/Edit/id
+        [HttpGet]
         public IActionResult Edit(int? id)
         {
             if (id!=null && id > 0)
@@ -142,15 +133,46 @@ namespace SuperShop.Controllers
         }
 
         [HttpPost]
-        public IActionResult Edit(Customer customer)
+        public IActionResult Edit(CustomerEditViewModel model)
         {
-            bool isSave = _customerManager.Update(customer);
-                if (isSave)
+            Customer customer = _customerManager.GetById(model.Id);
+            customer.Id = model.Id;
+            customer.Name = model.Name;
+            customer.Email = model.Email;
+            customer.Phone = model.Phone;
+            customer.Address = model.Address;
+            if (model.Photo != null)
+            {
+                if(model.ExistingPhoto != null)
                 {
-                    return RedirectToAction("List");
+                    string filePath = Path.Combine(hostingEnvironment.WebRootPath, "img", model.ExistingPhoto);
+                    System.IO.File.Delete(filePath);
                 }
-            return View(customer);
-         }
+                customer.PhotoPath = ProcessUploadFile(model);
+            }
+            bool isUpdate = _customerManager.Update(customer);
+            if (isUpdate)
+            {
+                return RedirectToAction("List");
+            }
+            return View();
+        }
+
+        private string ProcessUploadFile(CustomerCreateViewModel model)
+        {
+            string uniqueFilename = null;
+            if (model.Photo != null)
+            {
+                string uploadFolder = Path.Combine(hostingEnvironment.WebRootPath, "img");
+                uniqueFilename = Guid.NewGuid().ToString() + "_" + model.Photo.FileName;
+                string filePath = Path.Combine(uploadFolder, uniqueFilename);
+                using (var fileStream = new FileStream(filePath, FileMode.Create))
+                {
+                    model.Photo.CopyTo(fileStream);
+                }
+            }
+            return uniqueFilename;
+        }
 
         //Customer/Delete/id
         public IActionResult Delete(int? id)
