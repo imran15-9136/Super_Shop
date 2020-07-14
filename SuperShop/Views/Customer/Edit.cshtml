@@ -1,28 +1,33 @@
-﻿@model Customer
+﻿@model CustomerEditViewModel
 @{ 
     ViewBag.Title = "Customer Edit";
+    var photoPath = "~/img/" + (Model.ExistingPhoto ?? "noimage.jpg");
 }
 
     <div class="card">
         <div class="card-header">
-            <h1>Customer Edit</h1>
+            <h4>Customer Edit</h4>
         </div>
         <div class="card-body">
-            <form method="post">
+            <form method="post" enctype="multipart/form-data">
+                <input type="hidden" asp-for="Id" />
+                <input type="hidden" asp-for="ExistingPhoto" />
                 <div class="form-group">
-                    <input asp-for="Id" type="hidden" />
                     <label for="Name">Name</label>
                     <input asp-for="Name" type="text" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
                 </div>
 
                 <div class="form-group">
                     <label for="Phone">Phone</label>
                     <input asp-for="Phone" type="tel" class="form-control" />
+                    <span asp-validation-for="Phone" class="text-danger"></span>
                 </div>
 
                 <div class="form-group">
                     <label for="Email">Email</label>
                     <input asp-for="Email" type="email" class="form-control" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
                 </div>
 
                 <div class="form-group">
@@ -30,8 +35,18 @@
                     <input asp-for="Address" type="text" class="form-control" />
                 </div>
 
+                <div class="form-group">
+                    <label asp-for="Photo" class="control-label"></label>
+                    <input type="file" id="files" asp-for="Photo" class="form-control-file" />
+                </div>
+
                 <div>
-                    <input type="submit" value="Save" class="btn btn-primary" />
+                    <img src="@photoPath" style="max-width:100px;max-height:100px" asp-append-version="true" />
+                </div>
+
+                <div>
+                    <input type="submit" value="Update" class="btn btn-primary" />
+                    <a asp-action="List" class="btn btn-primary">Cancel</a>
                 </div>
             </form>
         </div>

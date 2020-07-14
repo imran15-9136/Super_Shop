@@ -5,6 +5,7 @@ using SuperShop.Repositories.Abstraction;
 using SuperShop.Repositories.Abstraction.Base;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace SuperShop.Repositories
@@ -15,6 +16,11 @@ namespace SuperShop.Repositories
         public ProductRepositories(DbContext db):base(db)
         {
             _db = (SuperShopDbContext)db;
+        }
+
+        public override ICollection<Product> GetAll()
+        {
+            return _db.Products.Include(c => c.Category).ToList();
         }
         public Product GetById(int? id)
         {

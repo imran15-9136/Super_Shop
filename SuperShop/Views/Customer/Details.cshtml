@@ -2,48 +2,59 @@
 
 @{
     ViewData["Title"] = "Details";
-    //var photoPath = "~/img/" + (Model.PhotoPath ?? "noimage.jpg");
+    var photoPath = "~/img/" + (Model.PhotoPath ?? "noimage.jpg");
     //var photoPath = "~/img/@Model.PhotoPath";
 }
 
-<h1>Details</h1>
-<div>
-    <h4>Customer</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Phone)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Phone)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Email)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Address)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Address)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.PhotoPath)
-        </dt>
-        <dd class="col-sm-10">
-            <img src='@("~/img/"+Model.PhotoPath)' style="max-width:100px;max-height:100px" asp-append-version="true" />
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
-    <a asp-action="List">Back to List</a>
+
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Customer Details</h6>
+    </div>
+    <div class="card-body">
+        <p>Here is your details. If you found your information is wrong please update your information to press edit button.</p>
+        <!-- Circle Buttons (Default) -->
+        <div>
+            <hr />
+            <dl class="row">
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Name)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Name)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Phone)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Phone)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Email)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Email)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Address)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Address)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.PhotoPath)
+                </dt>
+                <dd class="col-sm-10">
+                    <img src="@photoPath" style="max-width:100px;max-height:100px" asp-append-version="true" />
+                    @*<img src="@("~/img/"+ Model.PhotoPath)" style="max-width:100px;max-height:100px" asp-append-version="true" />*@
+                </dd>
+            </dl>
+        </div>
+        <div>
+            <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-success">Edit</a> |
+            <a asp-action="List" class="btn btn-primary">Back to List</a>
+        </div>
+
+    </div>
 </div>
