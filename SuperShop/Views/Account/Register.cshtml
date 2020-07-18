@@ -1,6 +1,7 @@
-﻿@model CustomerCreateViewModel
+﻿@model RegisterViewModel
 @{ 
     Layout = null;
+    ViewBag.Title = "Register";
 }
 <!DOCTYPE html>
 <html lang="en">
@@ -13,7 +14,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Register</title>
+    <title>Super Shop - Register</title>
 
     <environment include="Development">
         <!-- Custom fonts for this template-->
@@ -21,9 +22,9 @@
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
         <!-- Custom styles for this template-->
-        <link href="css/sb-admin-2.min.css" rel="stylesheet">
+        <link href="~/css/sb-admin-2.min.css" rel="stylesheet">
     </environment>
-    <environment exclude="Development">
+    <environment include="Staging,Production">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     </environment>
 
@@ -43,30 +44,32 @@
                             <div class="text-center">
                                 <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
                             </div>
-                            <form class="user">
-                                <div class="form-group row">
+                            <form class="user" method="post">
+                                @*<div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
                                         <input type="text" class="form-control form-control-user" id="exampleFirstName" placeholder="First Name">
                                     </div>
                                     <div class="col-sm-6">
                                         <input type="text" class="form-control form-control-user" id="exampleLastName" placeholder="Last Name">
                                     </div>
-                                </div>
+                                </div>*@
+                                <div asp-validation-summary="All" class="text-danger"></div>
                                 <div class="form-group">
-                                    <input type="email" class="form-control form-control-user" id="exampleInputEmail" placeholder="Email Address">
+                                    <input asp-for="Email" class="form-control form-control-user" id="exampleInputEmail" placeholder="Email Address">
+                                    <span asp-validation-for="Email" class="text-danger"></span>
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Password">
+                                        <input asp-for="Password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Password">
+                                        <span asp-validation-for="Password" class="text-danger"></span>
                                     </div>
                                     <div class="col-sm-6">
-                                        <input type="password" class="form-control form-control-user" id="exampleRepeatPassword" placeholder="Repeat Password">
+                                        <input asp-for="ConfirmPassword" class="form-control form-control-user" id="exampleRepeatPassword" placeholder="Repeat Password">
+                                        <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
                                     </div>
                                 </div>
-                                <a href="login.html" class="btn btn-primary btn-user btn-block">
-                                    Register Account
-                                </a>
-                                <hr>
+                                <button type="submit" class="btn btn-primary btn-user btn-block">Register Account</button>
+                                 <hr>
                                 <a href="index.html" class="btn btn-google btn-user btn-block">
                                     <i class="fab fa-google fa-fw"></i> Register with Google
                                 </a>
@@ -90,14 +93,14 @@
     </div>
 
     <!-- Bootstrap core JavaScript-->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/vendor/jquery/jquery.min.js"></script>
+    <script src="~/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Core plugin JavaScript-->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="~/vendor/jquery-easing/jquery.easing.min.js"></script>
 
     <!-- Custom scripts for all pages-->
-    <script src="js/sb-admin-2.min.js"></script>
+    <script src="~/js/sb-admin-2.min.js"></script>
 
 </body>
 

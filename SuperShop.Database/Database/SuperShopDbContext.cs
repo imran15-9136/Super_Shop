@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using SuperShop.Models;
 using SuperShop.Models.EntityModels;
 using SuperShop.Models.RequestModel;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace SuperShop.Database
 {
-    public class SuperShopDbContext:DbContext
+    public class SuperShopDbContext:IdentityDbContext
     {
         public SuperShopDbContext(DbContextOptions <SuperShopDbContext>options):base(options)
         {
@@ -29,6 +30,7 @@ namespace SuperShop.Database
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
             modelBuilder.Seed();
         }
     }

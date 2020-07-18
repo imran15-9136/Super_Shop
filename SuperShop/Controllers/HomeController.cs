@@ -32,29 +32,29 @@ namespace SuperShop.Controllers
             return View();
         }
 
-        public IActionResult Login()
-        {
-            return View();
-        }
-        [HttpPost]
-        public IActionResult Login(EmployeeCreateViewModel model)
-        {
-            Employee employee = _mapper.Map<Employee>(model);
+        //public IActionResult Login()
+        //{
+        //    return View();
+        //}
+        //[HttpPost]
+        //public IActionResult Login(EmployeeCreateViewModel model)
+        //{
+        //    Employee employee = _mapper.Map<Employee>(model);
 
-            if (ModelState.IsValid)
-            {
-                if(employee.Email == model.Email && employee.Password == model.Password)
-                {
-                    return RedirectToAction("Dashboard");
-                }
-            }
-            return View();
-        }
+        //    if (ModelState.IsValid)
+        //    {
+        //        if(employee.Email == model.Email && employee.Password == model.Password)
+        //        {
+        //            return RedirectToAction("Dashboard");
+        //        }
+        //    }
+        //    return View();
+        //}
 
-        public IActionResult Register()
-        {
-            return View();
-        }
+        //public IActionResult Register()
+        //{
+        //    return View();
+        //}
 
         public IActionResult Privacy()
         {
