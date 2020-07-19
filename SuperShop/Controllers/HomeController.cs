@@ -22,12 +22,11 @@ namespace SuperShop.Controllers
             _logger = logger;
             _mapper = mapper;
         }
-
+        [AllowAnonymous]
         public IActionResult Index()
         {
             return View();
         }
-        [Authorize]
         public IActionResult Dashboard()
         {
             return View();
