@@ -9,9 +9,12 @@
     <Compile Remove="Migrations\20200402082008_ProductCatagory_add.Designer.cs" />
     <Compile Remove="Migrations\20200714034332_product_foreignkey.cs" />
     <Compile Remove="Migrations\20200714034332_product_foreignkey.Designer.cs" />
+    <Compile Remove="Migrations\20200718154833_Identity_user.cs" />
+    <Compile Remove="Migrations\20200718154833_Identity_user.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.3" />
     <PackageReference Include="Microsoft.Entityframeworkcore.design" Version="3.1.3">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>

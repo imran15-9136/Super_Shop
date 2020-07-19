@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -14,6 +15,7 @@ using SuperShop.Models.RequestModel;
 
 namespace SuperShop.Controllers
 {
+    [Authorize]
     public class EmployeeController : Controller
     {
         public IEmployeeManager _employeeManagerl;

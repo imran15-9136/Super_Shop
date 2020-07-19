@@ -15,7 +15,7 @@ using SuperShop.Repositories.Abstraction;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using SuperShop.Database;
-
+using Microsoft.AspNetCore.Identity;
 
 namespace SuperShop
 {
@@ -38,6 +38,9 @@ namespace SuperShop
             //services.AddDbContext<SuperShopDbContext>();
             SuperShop.Configuration.ConfigureServices.Configure(services, Configuration);
 
+            services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<SuperShopDbContext>();
+
+
             //services.Configure<StripeSetting>(Configuration.GetSection("Stripe"));
             services.AddAutoMapper(typeof(Startup).Assembly);
         }
@@ -49,21 +52,24 @@ namespace SuperShop
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseStatusCodePagesWithReExecute("/Error/{0}");
             }
             else
             {
                 app.UseExceptionHandler("/Home/Error");
-                app.UseStatusCodePagesWithRedirects("/Error/{0}");
+                //app.UseStatusCodePagesWithRedirects("/Error/{0}");
+                app.UseStatusCodePagesWithReExecute("/Error/{0}");
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
+            app.UseAuthentication();
+
             app.UseRouting();
-
             app.UseAuthorization();
-
+            
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
