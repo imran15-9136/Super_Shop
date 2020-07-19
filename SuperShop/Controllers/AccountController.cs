@@ -80,5 +80,12 @@ namespace SuperShop.Controllers
             ModelState.AddModelError(string.Empty, "Invalid Operation");
             return View(model);
         }
+
+        [HttpGet]
+        [AllowAnonymous]
+        public IActionResult Reset()
+        {
+            return View();
+        }
     }
 }
