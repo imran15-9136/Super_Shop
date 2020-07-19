@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SuperShop.BLL.Abstraction;
 using SuperShop.Models;
@@ -10,6 +11,7 @@ using SuperShop.Models.ResponseModel;
 
 namespace SuperShop.Controllers
 {
+    [Authorize]
     public class ProductCatagoryController : Controller
     {
         private readonly IProductCatagoryManager _catagoryManager;

@@ -23,6 +23,7 @@ namespace SuperShop.Models
         public string Email { get; set; }
         public string Address { get; set; }
         public bool isDelete { get; set; }
+        [Display(Name="Image")]
         public string PhotoPath { get; set; }
 
         public bool Delete()

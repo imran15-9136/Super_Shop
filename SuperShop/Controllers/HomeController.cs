@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using SuperShop.Models;
@@ -26,7 +27,7 @@ namespace SuperShop.Controllers
         {
             return View();
         }
-
+        [Authorize]
         public IActionResult Dashboard()
         {
             return View();

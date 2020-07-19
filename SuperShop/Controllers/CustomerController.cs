@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using SuperShop.BLL.Abstraction;
@@ -16,6 +17,7 @@ using SuperShop.Models.ResponseModel;
 
 namespace SuperShop.Controllers
 {
+    [Authorize]
     public class CustomerController : Controller
     {
         private readonly ICustomerManager _customerManager;
@@ -36,6 +38,7 @@ namespace SuperShop.Controllers
         }
 
         //Customer/Create
+        [Authorize]
         public IActionResult Create()
         {
             CustomerCreateViewModel customer = new CustomerCreateViewModel();
@@ -44,7 +47,7 @@ namespace SuperShop.Controllers
             //                        .Select(c => _mapper.Map<CustomerResponseModel>(c)).ToList();
             return View();
         }
-
+        [Authorize]
         [HttpPost]
         public IActionResult Create(CustomerCreateViewModel model)
         {
