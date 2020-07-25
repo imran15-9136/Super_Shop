@@ -16,6 +16,8 @@ using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using SuperShop.Database;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc.Authorization;
 
 namespace SuperShop
 {
@@ -35,6 +37,12 @@ namespace SuperShop
             //options.UseSqlServer(Configuration.GetConnectionString("connectionString")));
 
             services.AddControllersWithViews();
+
+            services.AddMvc(config => {
+                var policy = new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build();
+                config.Filters.Add(new AuthorizeFilter(policy));
+            }).AddXmlSerializerFormatters();
+
             //services.AddDbContext<SuperShopDbContext>();
             SuperShop.Configuration.ConfigureServices.Configure(services, Configuration);
 
