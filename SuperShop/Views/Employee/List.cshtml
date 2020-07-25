@@ -69,9 +69,9 @@
                         @(item.Department == null? "N/A" :item.Department.Name)
                     </td>
                     <td>
-                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-primary">Edit</a> |
-                        <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-success">Details</a> |
-                        <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
+                        <a asp-action="Edit" asp-route-id="@item.Id"><i class="far fa-edit" style="color:#4e73df"></i></a> |
+                        <a asp-action="Details" asp-route-id="@item.Id"><i class="far fa-eye" style="color:#1cc88a;"></i></a> |
+                        <a asp-action="Delete" asp-route-id="@item.Id"><i class="far fa-trash-alt" style="color:#e74a3b;"></i></a>
                     </td>
                 </tr>
 

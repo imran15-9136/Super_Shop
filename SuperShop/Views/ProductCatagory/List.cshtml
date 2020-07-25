@@ -20,6 +20,9 @@
                     <th>
                         @Html.DisplayNameFor(model => model.Name)
                     </th>
+                    <th>
+                        Action
+                    </th>
                 </tr>
             </thead>
 
@@ -30,10 +33,8 @@
                     <tr>
                         <td>@catagory.Name</td>
                         <td>
-                            <a asp-controller="ProductCatagory" asp-action="Edit" asp-route-id="@catagory.Id" class="btn btn-primary">Edit</a>
-                        </td>
-                        <td>
-                            <a asp-controller="ProductCatagory" asp-action="Delete" asp-route-id="@catagory.Id" class="btn btn-danger">Delete</a>
+                            <a asp-controller="ProductCatagory" asp-action="Edit" asp-route-id="@catagory.Id"><i class="far fa-edit"></i></a>
+                            <a asp-controller="ProductCatagory" asp-action="Delete" asp-route-id="@catagory.Id"><i class="far fa-trash-alt" style="color:#DC143C;"></i></a>
                         </td>
                     </tr>
                 }
