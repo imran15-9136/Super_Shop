@@ -1,0 +1,36 @@
+﻿@model UserAssignVM
+@{
+    ViewData["Title"] = "AssignUser";
+}
+
+
+<h4>User Assign</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="AssignUser" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <label asp-for="UserId">Users</label>
+            <select asp-for="UserId" asp-items="Model.UserList" class="form-control">
+                <option>Select User</option>
+            </select>
+            <span asp-validation-for="UserId" class="text-danger"></span>
+            <span asp-validation-for="UserId" class="alert-danger"></span>
+
+            <label asp-for="RoleId">Roles</label>
+            <select asp-for="RoleId" asp-items="Model.RoleList" class="form-control">
+                <option>Select Role</option>
+            </select>
+            <span asp-validation-for="RoleId" class="text-danger"></span>
+            <span asp-validation-for="RoleId" class="alert-danger"></span>
+
+            <div class="form-group">
+                <input type="submit" value="Assign" class="btn btn-success" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="List" class="btn btn-primary">Back to List</a>
+</div>

@@ -39,6 +39,7 @@ namespace SuperShop.Controllers
 
         //Customer/Create
         [Authorize]
+        [HttpGet]
         public IActionResult Create()
         {
             CustomerCreateViewModel customer = new CustomerCreateViewModel();

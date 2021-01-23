@@ -43,6 +43,15 @@ namespace SuperShop
                 config.Filters.Add(new AuthorizeFilter(policy));
             }).AddXmlSerializerFormatters();
 
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("Editable", policy =>
+                                                policy.RequireClaim("Edit Option"));
+
+                options.AddPolicy("ReolePermission", policy =>
+                                               policy.RequireRole("Admin"));
+            });
+
             //services.AddDbContext<SuperShopDbContext>();
             SuperShop.Configuration.ConfigureServices.Configure(services, Configuration);
 

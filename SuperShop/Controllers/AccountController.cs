@@ -109,5 +109,54 @@ namespace SuperShop.Controllers
         {
             return View();
         }
+
+        [HttpGet]
+        public async Task<IActionResult> ChangePassword()
+        {
+
+            //var user = await userManager.GetUserAsync(User);
+            //if (user==null)
+            //{
+            //    return View("NotFound");
+            //}
+
+            //var hasPassword = await userManager.HasPasswordAsync(user);
+            //if (!hasPassword)
+            //{
+            //    return Json($"User {user} Not Found");
+            //}
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> ChangePassword(ChangePasswordViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = await userManager.GetUserAsync(User);
+                if(user == null)
+                {
+                    return RedirectToAction("Login");
+                }
+
+                #region Change Password Method
+                var result = userManager.ChangePasswordAsync(user, model.CurrentPassword, model.NewPassword);
+                #endregion
+
+                await signInManager.RefreshSignInAsync(user);
+                if (result.IsCompletedSuccessfully)
+                {
+                   return Json("Password Change Successfully");
+                }
+                //if (!result.IsCompletedSuccessfully)
+                //{
+                //    foreach (var error in result.Exception)
+                //    {
+
+                //    }
+                //}
+            }
+            return View(model);
+        }
     }
 }

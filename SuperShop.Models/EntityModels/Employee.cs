@@ -10,7 +10,9 @@ namespace SuperShop.Models.EntityModels
         public int Id { get; set; }
         public string Name { get; set; }
         public string Designation { get; set; }
+        [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
+        [DataType(DataType.Password)]
         public string Password { get; set; }
         public byte[] Image { get; set; }
         public int DepartmentId { get; set; }

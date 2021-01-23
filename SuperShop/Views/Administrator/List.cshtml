@@ -1,0 +1,57 @@
+﻿@model IEnumerable<IdentityRole>
+
+@{
+    ViewData["Title"] = "List";
+}
+
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">User Role</h6>
+        </div>
+        <div class="card-body">
+            <p>Here is the list of User Role.</p>
+            <!-- Circle Buttons (Default) -->
+
+            <p>
+                <a asp-controller="Administrator" asp-action="Create" class="btn btn-primary shadow-sm">Create New</a>
+            </p>
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            <label>Id</label>
+                        </th>
+                        <th>
+                            <label>Name</label>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model.Any())
+                    {
+                        @foreach (var role in Model)
+                        {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => role.Id)
+                            </td>
+                            <td>
+                                <a asp-action="Details" asp-route-id="@role.Id">@Html.DisplayFor(modelItem => role.Name)</a> 
+                            </td>
+                            <td>
+                                <a asp-controller="Administrator" asp-action="Edit" asp-route-id="@role.Id"><i class="far fa-edit"></i></a> |
+                                <a asp-controller="Administrator" asp-action="Delete" asp-route-id="@role.Id"><i class="far fa-trash-alt" style="color:#DC143C;"></i></a>
+                            </td>
+                        </tr>
+                        }
+                    }
+                    else
+                    {
+                        <h3>No Role Exist.</h3>
+                        <a asp-controller="Administrator" asp-action="Create" class="btn btn-primary shadow-sm">Create</a>
+                    }
+                </tbody>
+            </table>
+           </div>
+        </div>

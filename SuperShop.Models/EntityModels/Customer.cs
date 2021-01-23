@@ -18,8 +18,7 @@ namespace SuperShop.Models
         [MaxLength(15,ErrorMessage ="Maximum Lenth is 15")]
         public string Phone { get; set; }
         [Required]
-        [RegularExpression(@"^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$",
-                            ErrorMessage = "Invalid Email Format")]
+        [RegularExpression(@"^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$", ErrorMessage = "Invalid Email Format")]
         public string Email { get; set; }
         public string Address { get; set; }
         public bool isDelete { get; set; }

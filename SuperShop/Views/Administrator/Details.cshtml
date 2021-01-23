@@ -1,0 +1,27 @@
+﻿@model AdministratorEditViewModel
+@{
+    ViewData["Title"] = "Details";
+}
+
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h1>Details</h1>
+    </div>
+    <div class="card-body">
+        <div class="form-group">
+            <label for="Id">Id</label>
+            <input type="text" asp-for="Id" disabled class="form-control" />
+        </div>
+        <div class="form-group">
+            <label for="Name">Name</label>
+            <input type="text" asp-for="RoleName" disabled class="form-control" />
+            <span asp-validation-for="RoleName" class="alert-danger"></span>
+        </div>
+        <div>
+            <a asp-controller="Administrator" asp-action="EditUserInRole" asp-route-roleId="@Model.Id" class="btn btn-success">Add User</a>
+            <a asp-action="List" class="btn btn-primary">Cancel</a>
+        </div>
+        <div asp-validation-summary="All" class="text-danger"></div>
+     </div>
+</div>

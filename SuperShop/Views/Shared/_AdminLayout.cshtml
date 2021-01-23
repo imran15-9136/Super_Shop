@@ -1,4 +1,6 @@
 ﻿@*@using Microsoft.AspNetCore.Identity;*@
+@using Microsoft.AspNetCore.Authorization
+@inject IAuthorizationService AuthorizationService
 @inject SignInManager<IdentityUser> signInManager;
 
 <!DOCTYPE html>
@@ -90,36 +92,42 @@
                     </div>
                 </div>
             </li>
-
-            <!-- Nav Item - Product Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseProducts" aria-expanded="true" aria-controls="collapseUtilities">
-                    <i class="fas fa-fw fa-female"></i>
-                    <span>Product</span>
-                </a>
-                <div id="collapseProducts" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Product Utilities:</h6>
-                        <a class="collapse-item" asp-controller="Product" asp-action="Create">Add Product</a>
-                        <a class="collapse-item" asp-controller="Product" asp-action="List">Product List</a>
-                    </div> 
-                </div>
-            </li>
-
-            <!-- Nav Item - Product Catagory Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCatagory" aria-expanded="true" aria-controls="collapseUtilities">
-                    <i class="fas fa-fw fa-female"></i>
-                    <span>Product Catagory</span>
-                </a>
-                <div id="collapseCatagory" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Product Catagory Utilities:</h6>
-                        <a class="collapse-item" asp-controller="ProductCatagory" asp-action="Create">Add Catagory</a>
-                        <a class="collapse-item" asp-controller="ProductCatagory" asp-action="List">Catagory List</a>
+            @if (signInManager.IsSignedIn(User) && (await AuthorizationService.AuthorizeAsync(User, "ReolePermission")).Succeeded)
+            {
+                <!-- Nav Item - Product Collapse Menu -->
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseProducts" aria-expanded="true" aria-controls="collapseUtilities">
+                        <i class="fas fa-fw fa-female"></i>
+                        <span>Product</span>
+                    </a>
+                    <div id="collapseProducts" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+                        <div class="bg-white py-2 collapse-inner rounded">
+                            <h6 class="collapse-header">Product Utilities:</h6>
+                            <a class="collapse-item" asp-controller="Product" asp-action="Create">Add Product</a>
+                            <a class="collapse-item" asp-controller="Product" asp-action="List">Product List</a>
+                        </div>
                     </div>
-                </div>
-            </li>
+                </li>
+            }
+
+            @if (signInManager.IsSignedIn(User) && (await AuthorizationService.AuthorizeAsync(User, "ReolePermission")).Succeeded)
+            {
+                <!-- Nav Item - Product Catagory Collapse Menu -->
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCatagory" aria-expanded="true" aria-controls="collapseUtilities">
+                        <i class="fas fa-fw fa-female"></i>
+                        <span>Product Catagory</span>
+                    </a>
+                    <div id="collapseCatagory" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+                        <div class="bg-white py-2 collapse-inner rounded">
+                            <h6 class="collapse-header">Product Catagory Utilities:</h6>
+                            <a class="collapse-item" asp-controller="ProductCatagory" asp-action="Create">Add Catagory</a>
+                            <a class="collapse-item" asp-controller="ProductCatagory" asp-action="List">Catagory List</a>
+                        </div>
+                    </div>
+                </li>
+            }
+
 
             <!-- Divider -->
             <hr class="sidebar-divider">
@@ -140,10 +148,46 @@
                         <h6 class="collapse-header">E-commerce Summery</h6>
                         <a class="collapse-item" asp-controller="Product" asp-action="Add">Order</a>
                         <a class="collapse-item" asp-controller="Product" asp-action="Edit">Invoice</a>
-                        <a class="collapse-item" asp-controller="Product" asp-action="List">Report</a>
                     </div>
                 </div>
             </li>
+
+            <!-- Nav Item - Role Create Menu -->
+            @*@if (signInManager.IsSignedIn(User) && (await AuthorizationService.AuthorizeAsync(User, "ReolePermission")).Succeeded)
+            {
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseRole" aria-expanded="true" aria-controls="collapsePages">
+                        <i class="fas fa-fw fa-football-ball"></i>
+                        <span>Role Manager</span>
+                    </a>
+                    <div id="collapseRole" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                        <div class="bg-white py-2 collapse-inner rounded">
+                            <h6 class="collapse-header">Role Manager</h6>
+                            <a class="collapse-item" asp-controller="Administrator" asp-action="Create">Add Role</a>
+                            <a class="collapse-item" asp-controller="Administrator" asp-action="List">Role List</a>
+                            <a class="collapse-item" asp-controller="Administrator" asp-action="AssignUser">Assign User</a>
+                        </div>
+                    </div>
+                </li>
+            }*@
+            @if (signInManager.IsSignedIn(User) && User.IsInRole("Admin"))
+            {
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseRole" aria-expanded="true" aria-controls="collapsePages">
+                        <i class="fas fa-fw fa-football-ball"></i>
+                        <span>Role Manager</span>
+                    </a>
+                    <div id="collapseRole" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                        <div class="bg-white py-2 collapse-inner rounded">
+                            <h6 class="collapse-header">Role Manager</h6>
+                            <a class="collapse-item" asp-controller="Administrator" asp-action="Create">Add Role</a>
+                            <a class="collapse-item" asp-controller="Administrator" asp-action="List">Role List</a>
+                            <a class="collapse-item" asp-controller="Administrator" asp-action="AssignUser">Assign User</a>
+                        </div>
+                    </div>
+                </li>
+            }
+
 
             <!-- Nav Item - Charts -->
             <li class="nav-item">
@@ -345,9 +389,9 @@
                                         <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
                                         Settings
                                     </a>
-                                    <a class="dropdown-item" href="#">
+                                    <a class="dropdown-item" asp-action="ChangePassword" asp-controller="Account">
                                         <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                                        Activity Log
+                                        Change Password
                                     </a>
                                     <div class="dropdown-divider"></div>
 
@@ -358,9 +402,9 @@
                                         </button>
                                     </form>
                                     @*<a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
-                                        <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                                        Logout
-                                    </a>*@
+                                            <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                            Logout
+                                        </a>*@
 
                                 </div>
                             </li>

@@ -12,6 +12,13 @@
         <strong>Request ID:</strong> <code>@Model.RequestId</code>
     </p>
 }
+<div class="text-center">
+    <p class="lead text-danger mb-5">@ViewBag.ErrorMessage</p>
+    <p class="lead text-gray-800 mb-5">@ViewBag.Path</p>
+    <p class="lead text-gray-800 mb-5">@ViewBag.QS</p>
+    <p class="text-gray-500 mb-0">It looks like you found a glitch in the matrix...</p>
+    <a asp-action="Dashboard" asp-controller="Home">&larr; Back to Dashboard</a>
+</div>
 
 <h3>Development Mode</h3>
 <p>
