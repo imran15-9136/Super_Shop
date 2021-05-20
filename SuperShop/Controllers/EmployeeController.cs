@@ -38,6 +38,7 @@ namespace SuperShop.Controllers
                                                         }).ToList();
             return View(employee);
         }
+
         [HttpPost]
         public async Task<IActionResult> Create(EmployeeCreateViewModel model, IFormFile Image)
         {
