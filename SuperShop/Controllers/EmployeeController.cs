@@ -60,8 +60,16 @@ namespace SuperShop.Controllers
         }
         public IActionResult List()
         {
-            ICollection<Employee> employees= _employeeManagerl.GetAll();
-            return View(employees);
+            try
+            {
+                ICollection<Employee> employees = _employeeManagerl.GetAll();
+                return View(employees);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            
         }
 
         public IActionResult GetByRequest([FromQuery] EmployeeRequestModel employee)

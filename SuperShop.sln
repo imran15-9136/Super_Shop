@@ -21,8 +21,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SuperShop.API", "SuperShop.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SuperShop.Configuration", "SuperShop.Configuration\SuperShop.Configuration.csproj", "{7DCEA489-8922-4B1D-9971-602469699AC3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassLibrary1", "ClassLibrary1\ClassLibrary1.csproj", "{C6236427-E2E9-465D-8087-BAF5E36FD468}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -65,10 +63,6 @@ Global
 		{7DCEA489-8922-4B1D-9971-602469699AC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7DCEA489-8922-4B1D-9971-602469699AC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7DCEA489-8922-4B1D-9971-602469699AC3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C6236427-E2E9-465D-8087-BAF5E36FD468}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C6236427-E2E9-465D-8087-BAF5E36FD468}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C6236427-E2E9-465D-8087-BAF5E36FD468}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C6236427-E2E9-465D-8087-BAF5E36FD468}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
